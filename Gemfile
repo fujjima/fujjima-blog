@@ -26,8 +26,6 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'activeadmin'
-gem 'active_admin_flat_skin'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 gem 'font-awesome-rails'
