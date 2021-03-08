@@ -7,8 +7,10 @@
     = csp_meta_tag
     = stylesheet_pack_tag 'application', media: 'all'
     = javascript_pack_tag 'application'
-  %body
-    = render 'layouts/sidebar'
-    -# = render 'layouts/header'
-    = render 'layouts/content_wrapper'
-    = yield
+  %body.hold-transition.sidebar-mini
+    .wrapper
+      = render 'layouts/sidebar'
+      -# %nav.main-header.navbar.navbar-expand.navbar-white.navbar-light
+      -#   = render 'layouts/header'
+      .content-wrapper
+        = yield
