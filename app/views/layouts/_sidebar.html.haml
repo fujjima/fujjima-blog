@@ -19,14 +19,14 @@
         /
           Add icons to the links using the .nav-icon class
           with font-awesome or any other icon font library
-        %li.nav-item.menu-open
-          -# ここのactiveが付いているか否かはURLとの一致で確認する
-          %a.nav-link.active{href: "admin"}
+        %li.nav-item
+          -# 動的にクラスを追加するようにする
+          = link_to admin_root_path, class: "nav-link #{controller.controller_name == 'dashboards' ? 'active' : '' }" do
             %i.nav-icon.fas.fa-tachometer-alt
             %p
-              Dashboard Page
+              Dashboard
         %li.nav-item
-          %a.nav-link{href: "admin/articles"}
+          = link_to admin_articles_path, class: "nav-link #{controller.controller_name == 'articles' ? 'active' : '' }" do
             %i.nav-icon.fas.fa-file-alt
             %p
               Articles
