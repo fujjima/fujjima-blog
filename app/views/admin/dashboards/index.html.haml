@@ -3,175 +3,130 @@
   This is a starter template page. Use this page to start your new project from
   scratch. This page gets rid of all links and provides the needed markup only.
 
-%html{lang: "en"}
-  %head
-    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{charset: "utf-8"}/
-    %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
-    %title AdminLTE 3 | Starter
-    -# / Google Font: Source Sans Pro
-    -# %link{href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback", rel: "stylesheet"}/
-    -# / Font Awesome Icons
-    -# %link{href: "plugins/fontawesome-free/css/all.min.css", rel: "stylesheet"}/
-    -# / Theme style
-    -# %link{href: "dist/css/adminlte.min.css", rel: "stylesheet"}/
-  %body.hold-transition.sidebar-mini
-    .wrapper
-      / Navbar
-      %nav.main-header.navbar.navbar-expand.navbar-white.navbar-light
-        / Left navbar links
-        %ul.navbar-nav
-          %li.nav-item
-            %a.nav-link{"data-widget" => "pushmenu", href: "#", role: "button"}
-              %i.fas.fa-bars
-          %li.nav-item.d-none.d-sm-inline-block
-            %a.nav-link{href: "index3.html"} Home
-          %li.nav-item.d-none.d-sm-inline-block
-            %a.nav-link{href: "#"} Contact
-        / SEARCH FORM
-        %form.form-inline.ml-3
-          .input-group.input-group-sm
-            %input.form-control.form-control-navbar{"aria-label" => "Search", placeholder: "Search", type: "search"}/
-            .input-group-append
-              %button.btn.btn-navbar{type: "submit"}
-                %i.fas.fa-search
-        / Right navbar links
-        %ul.navbar-nav.ml-auto
-          / Messages Dropdown Menu
-          / Notifications Dropdown Menu
-          %li.nav-item.dropdown
-            %a.nav-link{"data-toggle" => "dropdown", href: "#"}
-              %i.far.fa-bell
-              %span.badge.badge-warning.navbar-badge 15
-            .dropdown-menu.dropdown-menu-lg.dropdown-menu-right
-              %span.dropdown-header 15 Notifications
-              .dropdown-divider
-              %a.dropdown-item{href: "#"}
-                %i.fas.fa-envelope.mr-2
-                4 new messages
-                %span.float-right.text-muted.text-sm 3 mins
-              .dropdown-divider
-              %a.dropdown-item{href: "#"}
-                %i.fas.fa-users.mr-2
-                8 friend requests
-                %span.float-right.text-muted.text-sm 12 hours
-              .dropdown-divider
-              %a.dropdown-item{href: "#"}
-                %i.fas.fa-file.mr-2
-                3 new reports
-                %span.float-right.text-muted.text-sm 2 days
-              .dropdown-divider
-              %a.dropdown-item.dropdown-footer{href: "#"} See All Notifications
-          %li.nav-item
-            %a.nav-link{"data-widget" => "fullscreen", href: "#", role: "button"}
-              %i.fas.fa-expand-arrows-alt
-          %li.nav-item
-            %a.nav-link{"data-slide" => "true", "data-widget" => "control-sidebar", href: "#", role: "button"}
-              %i.fas.fa-th-large
-      / /.navbar
-      / Main Sidebar Container
-      %aside.main-sidebar.sidebar-dark-primary.elevation-4
-        / Brand Logo
-        %a.brand-link{href: "index3.html"}
-          %img.brand-image.img-circle.elevation-3{alt: "AdminLTE Logo", src: "#{asset_pack_path 'media/images/AdminLTELogo.png'}", style: "opacity: .8"}/
-          %span.brand-text.font-weight-light AdminLTE 3
-        / Sidebar
-        .sidebar
-          / SidebarSearch Form
-          .form-inline
-            .input-group{"data-widget" => "sidebar-search"}
-              %input.form-control.form-control-sidebar{"aria-label" => "Search", placeholder: "Search", type: "search"}/
-              .input-group-append
-                %button.btn.btn-sidebar
-                  %i.fas.fa-search.fa-fw
-          / Sidebar Menu
-          %nav.mt-2
-            %ul.nav.nav-pills.nav-sidebar.flex-column{"data-accordion" => "false", "data-widget" => "treeview", role: "menu"}
-              /
-                Add icons to the links using the .nav-icon class
-                with font-awesome or any other icon font library
-              %li.nav-item.menu-open
-                %a.nav-link.active{href: "#"}
-                  %i.nav-icon.fas.fa-tachometer-alt
-                  %p
-                    Dashboard Page
-              %li.nav-item
-                %a.nav-link{href: "#"}
-                  %i.nav-icon.fas.fa-file-alt
-                  %p
-                    Articles
-          / /.sidebar-menu
-        / /.sidebar
-      / Content Wrapper. Contains page content
-      .content-wrapper
-        / Content Header (Page header)
-        .content-header
-          .container-fluid
-            .row.mb-2
-              .col-sm-6
-                %h1.m-0 Dashboard Page
-              / /.col
-            / /.row
-          / /.container-fluid
-        / /.content-header
-        / Main content
-        .content
-          .container-fluid
-            .row
-              .col-lg-6
-                .card
-                  .card-body
-                    %h5.card-title Card title
-                    %p.card-text
-                      Some quick example text to build on the card title and make up the bulk of the card's
-                      content.
-                    %a.card-link{href: "#"} Card link
-                    %a.card-link{href: "#"} Another link
-                .card.card-primary.card-outline
-                  .card-body
-                    %h5.card-title Card title
-                    %p.card-text
-                      Some quick example text to build on the card title and make up the bulk of the card's
-                      content.
-                    %a.card-link{href: "#"} Card link
-                    %a.card-link{href: "#"} Another link
-                / /.card
-              / /.col-md-6
-              .col-lg-6
-                .card
-                  .card-header
-                    %h5.m-0 Featured
-                  .card-body
-                    %h6.card-title Special title treatment
-                    %p.card-text With supporting text below as a natural lead-in to additional content.
-                    %a.btn.btn-primary{href: "#"} Go somewhere
-                .card.card-primary.card-outline
-                  .card-header
-                    %h5.m-0 Featured
-                  .card-body
-                    %h6.card-title Special title treatment
-                    %p.card-text With supporting text below as a natural lead-in to additional content.
-                    %a.btn.btn-primary{href: "#"} Go somewhere
-              / /.col-md-6
-            / /.row
-          / /.container-fluid
-        / /.content
-      / /.content-wrapper
-      / Control Sidebar
-      %aside.control-sidebar.control-sidebar-dark
-        / Control sidebar content goes here
-        .p-3
-          %h5 Title
-          %p Sidebar content
-      / /.control-sidebar
-      / Main Footer
-      %footer.main-footer
-        / To the right
-        .float-right.d-none.d-sm-inline
-          Anything you want
-        / Default to the left
-        %strong
-          Copyright © 2014-2020
-          = succeed "." do
-            %a{href: "https://adminlte.io"} AdminLTE.io
-        All rights reserved.
+%body.hold-transition.sidebar-mini
+  .wrapper
+    / Navbar
+    %nav.main-header.navbar.navbar-expand.navbar-white.navbar-light
+      / Left navbar links
+      %ul.navbar-nav
+        %li.nav-item
+          %a.nav-link{"data-widget" => "pushmenu", href: "#", role: "button"}
+            %i.fas.fa-bars
+        %li.nav-item.d-none.d-sm-inline-block
+          %a.nav-link{href: "index3.html"} Home
+        %li.nav-item.d-none.d-sm-inline-block
+          %a.nav-link{href: "#"} Contact
+      / SEARCH FORM
+      %form.form-inline.ml-3
+        .input-group.input-group-sm
+          %input.form-control.form-control-navbar{"aria-label" => "Search", placeholder: "Search", type: "search"}/
+          .input-group-append
+            %button.btn.btn-navbar{type: "submit"}
+              %i.fas.fa-search
+      / Right navbar links
+      %ul.navbar-nav.ml-auto
+        / Messages Dropdown Menu
+        / Notifications Dropdown Menu
+        %li.nav-item.dropdown
+          %a.nav-link{"data-toggle" => "dropdown", href: "#"}
+            %i.far.fa-bell
+            %span.badge.badge-warning.navbar-badge 15
+          .dropdown-menu.dropdown-menu-lg.dropdown-menu-right
+            %span.dropdown-header 15 Notifications
+            .dropdown-divider
+            %a.dropdown-item{href: "#"}
+              %i.fas.fa-envelope.mr-2
+              4 new messages
+              %span.float-right.text-muted.text-sm 3 mins
+            .dropdown-divider
+            %a.dropdown-item{href: "#"}
+              %i.fas.fa-users.mr-2
+              8 friend requests
+              %span.float-right.text-muted.text-sm 12 hours
+            .dropdown-divider
+            %a.dropdown-item{href: "#"}
+              %i.fas.fa-file.mr-2
+              3 new reports
+              %span.float-right.text-muted.text-sm 2 days
+            .dropdown-divider
+            %a.dropdown-item.dropdown-footer{href: "#"} See All Notifications
+        %li.nav-item
+          %a.nav-link{"data-widget" => "fullscreen", href: "#", role: "button"}
+            %i.fas.fa-expand-arrows-alt
+        %li.nav-item
+          %a.nav-link{"data-slide" => "true", "data-widget" => "control-sidebar", href: "#", role: "button"}
+            %i.fas.fa-th-large
+    / /.navbar
+    / Content Wrapper. Contains page content
+    .content-wrapper
+      / Content Header (Page header)
+      .content-header
+        .container-fluid
+          .row.mb-2
+            .col-sm-6
+              %h1.m-0 Dashboard Page
+            / /.col
+          / /.row
+        / /.container-fluid
+      / /.content-header
+      / Main content
+      .content
+        .container-fluid
+          .row
+            .col-lg-6
+              .card
+                .card-body
+                  %h5.card-title Card title
+                  %p.card-text
+                    Some quick example text to build on the card title and make up the bulk of the card's
+                    content.
+                  %a.card-link{href: "#"} Card link
+                  %a.card-link{href: "#"} Another link
+              .card.card-primary.card-outline
+                .card-body
+                  %h5.card-title Card title
+                  %p.card-text
+                    Some quick example text to build on the card title and make up the bulk of the card's
+                    content.
+                  %a.card-link{href: "#"} Card link
+                  %a.card-link{href: "#"} Another link
+              / /.card
+            / /.col-md-6
+            .col-lg-6
+              .card
+                .card-header
+                  %h5.m-0 Featured
+                .card-body
+                  %h6.card-title Special title treatment
+                  %p.card-text With supporting text below as a natural lead-in to additional content.
+                  %a.btn.btn-primary{href: "#"} Go somewhere
+              .card.card-primary.card-outline
+                .card-header
+                  %h5.m-0 Featured
+                .card-body
+                  %h6.card-title Special title treatment
+                  %p.card-text With supporting text below as a natural lead-in to additional content.
+                  %a.btn.btn-primary{href: "#"} Go somewhere
+            / /.col-md-6
+          / /.row
+        / /.container-fluid
+      / /.content
+    / /.content-wrapper
+    / Control Sidebar
+    %aside.control-sidebar.control-sidebar-dark
+      / Control sidebar content goes here
+      .p-3
+        %h5 Title
+        %p Sidebar content
+    / /.control-sidebar
+    / Main Footer
+    %footer.main-footer
+      / To the right
+      .float-right.d-none.d-sm-inline
+        Anything you want
+      / Default to the left
+      %strong
+        Copyright © 2014-2020
+        = succeed "." do
+          %a{href: "https://adminlte.io"} AdminLTE.io
+      All rights reserved.
