@@ -2,23 +2,11 @@
   %table.table
     %thead.thead-light
       %tr
-        %th{:scope => "col"} #
-        %th{:scope => "col"} First
-        %th{:scope => "col"} Last
-        %th{:scope => "col"} Handle
-    %tbody
-      %tr
-        %th{:scope => "row"} 1
-        %td Mark
-        %td Otto
-        %td @mdo
-      %tr
-        %th{:scope => "row"} 2
-        %td Jacob
-        %td Thornton
-        %td @fat
-      %tr
-        %th{:scope => "row"} 3
-        %td Larry
-        %td the Bird
-        %td @twitter
+        %th{:scope => "col"} id
+        %th{:scope => "col"} title
+        %th{:scope => "col"} content
+        -# statusはチェック状態にしておく
+        %th{:scope => "col"} status
+        %th{:scope => "col"} updated_at
+        %th{:scope => "col"} action
+      = render partial: 'layouts/articles/article', collection: @articles
