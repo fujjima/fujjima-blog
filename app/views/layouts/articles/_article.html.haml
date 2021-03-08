@@ -2,6 +2,13 @@
   %tr
     %th{:scope => "row"}=  article.id
     %td= article.title
+    -# TODO: できるか分からんが、文字制限をつける
     %td= article.text
     %td= article.published
     %td= article.updated_at
+    %td
+      = link_to edit_admin_article_path(article.id) do
+        = fa_icon 'edit'
+    %td
+      = link_to admin_article_path(article.id), method: :delete do
+        = fa_icon 'trash'
