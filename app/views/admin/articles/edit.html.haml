@@ -1,0 +1,27 @@
+-# scss読み込み
+
+-# markdown
+%script{:src => "https://cdn.jsdelivr.net/npm/marked/marked.min.js"}
+
+-# highlight.js
+%link{:href => "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/srcery.min.css", :rel => "stylesheet"}/
+%script{:src => "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"}
+/ and it's easy to individually load additional languages
+%script{:src => "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"}
+
+= stylesheet_pack_tag 'admin/articles/edit', media: 'all'
+= javascript_pack_tag 'admin/articles/markdown'
+
+%form
+  .form-group
+    %label{for: "articleTitle"} タイトル
+    %input#articleTitle.form-control{type: "text"}
+  .form-group
+    %label{:for => "articleText"} 本文
+    .row
+      .col-md-6
+        %textarea#articleText.form-control{:cols => "30", :rows => "30"}
+      .col-md-6
+        #markdown_preview.form-control{:cols => "30", :rows => "30"}
+      -# .col-md-6.border
+      -#   #markdown_preview

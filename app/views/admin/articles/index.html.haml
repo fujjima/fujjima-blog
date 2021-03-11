@@ -1,13 +1,12 @@
-.content
-  %table.table
-    %thead.thead-light
-      %tr
-        %th{:scope => "col"} id
-        %th{:scope => "col"} title
-        %th{:scope => "col"} content
-        -# statusはチェック状態にしておく
-        %th{:scope => "col"} status
-        %th{:scope => "col"} updated_at
-        %th{:scope => "col"} edit
-        %th{:scope => "col"} delete
-      = render partial: 'layouts/articles/article', collection: @articles
+%table.table
+  %thead.thead-light
+    %tr
+      %th{:scope => "col"} id
+      %th{:scope => "col"} title
+      %th{:scope => "col"} content
+      -# statusはチェック状態にしておく
+      %th{:scope => "col"} status
+      %th{:scope => "col"} updated_at
+      %th{:scope => "col"} edit
+      %th{:scope => "col"} delete
+    = render partial: 'layouts/articles/article', collection: @articles
