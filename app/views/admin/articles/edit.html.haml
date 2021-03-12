@@ -9,8 +9,7 @@
 / and it's easy to individually load additional languages
 %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"}
 
-= stylesheet_pack_tag 'admin/articles/edit', media: 'all'
-= javascript_pack_tag 'admin/articles/markdown'
+= javascript_pack_tag 'admin/articles/edit'
 
 %form
   .form-group
@@ -21,7 +20,5 @@
     .row
       .col-md-6
         %textarea#articleText.form-control{:cols => "30", :rows => "30"}
-      .col-md-6
-        #markdown_preview.form-control{:cols => "30", :rows => "30"}
-      -# .col-md-6.border
-      -#   #markdown_preview
+      .col-md-6.border
+        #markdown_preview
