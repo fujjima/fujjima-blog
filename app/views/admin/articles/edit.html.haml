@@ -1,5 +1,3 @@
--# scss読み込み
-
 -# markdown
 %script{:src => "https://cdn.jsdelivr.net/npm/marked/marked.min.js"}
 
@@ -11,14 +9,21 @@
 
 = javascript_pack_tag 'admin/articles/edit'
 
-%form
+= form_with model: [:admin, @article], local: true, method: :patch do |f|
   .form-group
-    %label{for: "articleTitle"} タイトル
-    %input#articleTitle.form-control{type: "text"}
+    = f.label :title
+    = f.text_field :title, class: 'form-control', value: @article.title
   .form-group
-    %label{:for => "articleText"} 本文
+    = f.label :slug
+    = f.text_field :slug, class: 'form-control', value: @article.slug
+  .form-group
+    = f.label :published
+    = f.select :published, [['publish', true], ['draft', false]], {}, class: 'form-control'
+  .form-group
+    = f.label :text
     .row
       .col-md-6
-        %textarea#articleText.form-control{:cols => "30", :rows => "30"}
+        = f.text_area :text, id: 'articleText', class: 'form-control', size: '30x30', value: @article.text
       .col-md-6.border
         #markdown_preview
+  = f.submit "更新する", class: 'btn btn-primary'
