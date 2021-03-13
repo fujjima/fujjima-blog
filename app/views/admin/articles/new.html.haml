@@ -9,21 +9,4 @@
 
 = javascript_pack_tag 'admin/articles/edit'
 
-= form_with model: [:admin, @article], local: true do |f|
-  .form-group
-    = f.label :title
-    = f.text_field :title, class: 'form-control'
-  .form-group
-    = f.label :slug
-    = f.text_field :slug, class: 'form-control'
-  .form-group
-    = f.label :published
-    = f.select :published, [['publish', true], ['draft', false]], {}, class: 'form-control'
-  .form-group
-    = f.label :text
-    .row
-      .col-md-6
-        = f.text_area :text, id: 'articleText', class: 'form-control', size: '30x30'
-      .col-md-6.border
-        #markdown_preview
-  = f.submit "更新する", class: 'btn btn-primary'
+= render 'layouts/admin/articles/form', article: @article

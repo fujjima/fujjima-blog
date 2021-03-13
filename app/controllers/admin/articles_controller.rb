@@ -11,6 +11,16 @@ class Admin::ArticlesController < AdminController
 
   def edit; end
 
+  def create
+    @article = Article.new(article_params)
+    if @article.save
+      redirect_to admin_articles_path, notice: "successed to create"
+    else
+      flash.now[:alert] = "failed to create"
+      render :edit
+    end
+  end
+
   def update
     @article.assign_attributes(article_params)
     if @article.save
