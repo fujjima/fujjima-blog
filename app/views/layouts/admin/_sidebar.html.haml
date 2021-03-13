@@ -20,15 +20,19 @@
           Add icons to the links using the .nav-icon class
           with font-awesome or any other icon font library
         %li.nav-item
-          -# 動的にクラスを追加するようにする
-          = link_to admin_root_path, class: "nav-link #{controller.controller_name == 'dashboards' ? 'active' : '' }" do
+          = link_to admin_root_path, class: "nav-link #{active_link('dashboards', 'index')}" do
             %i.nav-icon.fas.fa-tachometer-alt
             %p
               Dashboard
         %li.nav-item
-          = link_to admin_articles_path, class: "nav-link #{controller.controller_name == 'articles' ? 'active' : '' }" do
-            %i.nav-icon.fas.fa-file-alt
+          = link_to admin_articles_path, class: "nav-link #{active_link('articles', 'index')}" do
+            %i.nav-icon.far.fa-folder
             %p
               Articles
+        %li.nav-item
+          = link_to new_admin_article_path, class: "nav-link #{active_link('articles', 'new')}" do
+            %i.nav-icon.far.fa-file
+            %p
+              New Article
     / /.sidebar-menu
   / /.sidebar

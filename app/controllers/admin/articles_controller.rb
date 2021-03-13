@@ -1,5 +1,10 @@
 class Admin::ArticlesController < AdminController
   before_action :set_article, only: %w[edit update destroy]
+
+  def new
+    @article = Article.new
+  end
+
   def index
     @articles = Article.all
   end
