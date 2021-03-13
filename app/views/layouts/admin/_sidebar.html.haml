@@ -1,0 +1,38 @@
+/ Main Sidebar Container
+%aside.main-sidebar.sidebar-dark-primary.elevation-4
+  / Brand Logo
+  %a.brand-link{href: "index3.html"}
+    %img.brand-image.img-circle.elevation-3{alt: "AdminLTE Logo", src: "#{asset_pack_path 'media/images/AdminLTELogo.png'}", style: "opacity: .8"}/
+    %span.brand-text.font-weight-light AdminLTE 3
+  / Sidebar
+  .sidebar
+    / SidebarSearch Form
+    .form-inline
+      .input-group{"data-widget" => "sidebar-search"}
+        %input.form-control.form-control-sidebar{"aria-label" => "Search", placeholder: "Search", type: "search"}/
+        .input-group-append
+          %button.btn.btn-sidebar
+            %i.fas.fa-search.fa-fw
+    / Sidebar Menu
+    %nav.mt-2
+      %ul.nav.nav-pills.nav-sidebar.flex-column{"data-accordion" => "false", "data-widget" => "treeview", role: "menu"}
+        /
+          Add icons to the links using the .nav-icon class
+          with font-awesome or any other icon font library
+        %li.nav-item
+          = link_to admin_root_path, class: "nav-link #{active_link('dashboards', 'index')}" do
+            %i.nav-icon.fas.fa-tachometer-alt
+            %p
+              Dashboard
+        %li.nav-item
+          = link_to admin_articles_path, class: "nav-link #{active_link('articles', 'index')}" do
+            %i.nav-icon.far.fa-folder
+            %p
+              Articles
+        %li.nav-item
+          = link_to new_admin_article_path, class: "nav-link #{active_link('articles', 'new')}" do
+            %i.nav-icon.far.fa-file
+            %p
+              New Article
+    / /.sidebar-menu
+  / /.sidebar

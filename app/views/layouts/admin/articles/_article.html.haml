@@ -1,0 +1,14 @@
+%tbody
+  %tr
+    %th{:scope => "row"}=  article.id
+    %td= article.title
+    %td= article.text
+    %td= content_tag :span, article.published ? 'published' : 'draft', class: "badge badge-#{article.published ? 'primary' : 'warning'}"
+    %td= fotmat_date(article.created_at)
+    %td= fotmat_date(article.updated_at)
+    %td
+      = link_to edit_admin_article_path(article.id) do
+        = fa_icon 'edit'
+    %td
+      = link_to admin_article_path(article.id), method: :delete do
+        = fa_icon 'trash'
