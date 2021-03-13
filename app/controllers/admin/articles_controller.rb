@@ -31,7 +31,14 @@ class Admin::ArticlesController < AdminController
     end
   end
 
-  def destroy; end
+  def destroy
+    if @article.destroy
+      redirect_to admin_articles_path, notice: "successed to delete"
+    else
+      flash.now[:alert] = "failed to delete"
+      render :index
+    end
+  end
 
   private
 
