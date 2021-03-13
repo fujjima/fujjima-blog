@@ -3,8 +3,9 @@
     %th{:scope => "row"}=  article.id
     %td= article.title
     %td= article.text
-    %td= article.published
-    %td= article.updated_at
+    %td= article.published ? 'published' : 'draft'
+    %td= fotmat_date(article.created_at)
+    %td= fotmat_date(article.updated_at)
     %td
       = link_to edit_admin_article_path(article.id) do
         = fa_icon 'edit'
