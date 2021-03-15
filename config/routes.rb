@@ -3,7 +3,8 @@ Rails.application.routes.draw do
     get '/login', to: 'user_sessions#new'
     post '/login', to: 'user_sessions#create'
     post '/logout', to: 'user_sessions#destroy'
-    get '/register', to: 'user#new'
+    get '/register', to: 'users#new'
+    post '/register', to: 'users#create'
     get '/dashboards', to: 'dashboards#index'
     resources :users
     resources :articles

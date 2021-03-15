@@ -9,7 +9,7 @@
       .card
         .card-body.login-card-body
           %p.login-box-msg Sign in to start your session
-          = form_with url: admin_login_path, method: :post, local: true do |f|
+          = form_with model: [:admin, @user], local: true do |f|
             .form-group
               = f.label :email
               = f.text_field :email, class: 'form-control'
@@ -18,6 +18,4 @@
               = f.password_field :password, class: 'form-control'
             = f.submit "Login", class: 'btn btn-primary'
           %p.mb-0
-            %a{:href => "forgot-password.html"} I forgot my password
-          %p.mb-1
-            = link_to 'Register a new membership', admin_register_path
+            = link_to 'I already have a membership', admin_login_path

@@ -1,30 +1,27 @@
 class Admin::UsersController < ApplicationController
+  layout false
 
-  # サインアップ画面表示
   def new
-
+    @user = User.new
   end
 
-  # 管理者情報更新画面表示
-  def edit
-
-  end
+  def edit; end
 
   def create
     @user = User.new(user_params)
+    # TODO: メールがこなかった場合の対処
     if @user.save
+      # TODO: メール認証用のメール飛ばす
+      redirect_to admin_login_path, notice: 'please verify your email address'
     else
+      flash.now[:alert] = "failed to create user"
+      render :new
     end
   end
 
-  # 管理者情報更新（パスワード更新など）
-  def update
+  def update; end
 
-  end
-
-  def destroy
-
-  end
+  def destroy; end
 
   private
 
