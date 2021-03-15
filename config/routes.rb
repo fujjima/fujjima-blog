@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   namespace :admin do
-    root to: 'dashboards#index'
+    get '/login', to: 'user_sessions#new'
+    get '/logout', to: 'user_sessions#destroy'
+    get '/register', to: 'user#new'
+    get '/dashboards', to: 'dashboards#index'
+    resources :users
     resources :articles
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

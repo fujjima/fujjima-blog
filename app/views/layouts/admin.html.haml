@@ -7,6 +7,8 @@
     = csp_meta_tag
     = stylesheet_pack_tag 'admin', media: 'all'
     = javascript_pack_tag 'admin'
+  -# login時とそれ以外でコンテンツの出し分けがしたい
+  -# ログイン後用（サイドバーありコンテンツ）
   %body.hold-transition.sidebar-mini
     .wrapper
       = render 'layouts/admin/sidebar'
