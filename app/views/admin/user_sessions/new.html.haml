@@ -9,27 +9,14 @@
       .card
         .card-body.login-card-body
           %p.login-box-msg Sign in to start your session
-          %form{:action => "../../index3.html", :method => "post"}
-            .input-group.mb-3
-              %input.form-control{:placeholder => "Email", :type => "email"}/
-              .input-group-append
-                .input-group-text
-                  %span.fas.fa-envelope
-            .input-group.mb-3
-              %input.form-control{:placeholder => "Password", :type => "password"}/
-              .input-group-append
-                .input-group-text
-                  %span.fas.fa-lock
-            .row
-              .col-8
-                .icheck-primary
-                  %input#remember{:type => "checkbox"}/
-                  %label{:for => "remember"}
-                    Remember Me
-              / /.col
-              .col-4
-                %button.btn.btn-primary.btn-block{:type => "submit"} Sign In
-              / /.col
+          = form_with url: admin_login_path, method: :post, local: true do |f|
+            .form-group
+              = f.label :email
+              = f.text_field :email, class: 'form-control'
+            .form-group
+              = f.label :password
+              = f.password_field :password, class: 'form-control'
+            = f.submit "Login", class: 'btn btn-primary'
           %p.mb-1
             %a{:href => "forgot-password.html"} I forgot my password
           %p.mb-0

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   namespace :admin do
     get '/login', to: 'user_sessions#new'
-    get '/logout', to: 'user_sessions#destroy'
+    post '/login', to: 'user_sessions#create'
+    post '/logout', to: 'user_sessions#destroy'
     get '/register', to: 'user#new'
     get '/dashboards', to: 'dashboards#index'
     resources :users

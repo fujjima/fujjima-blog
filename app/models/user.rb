@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_secure_password
+  authenticates_with_sorcery!
+  enum role: { general: 0, admin: 1 }
   validate :check_if_user_only, on: :create
 
   def check_if_user_only
