@@ -1,4 +1,6 @@
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < AdminController
+  # edit, updateの時は必要かも（adminログイン後、admin情報を変更したい時など）
+  skip_before_action :require_login
   layout false
 
   def new
@@ -12,6 +14,7 @@ class Admin::UsersController < ApplicationController
     # TODO: メールがこなかった場合の対処
     if @user.save
       # TODO: メール認証用のメール飛ばす
+      # メール認証が成功したら権限を管理者に変更してログイン可能とする
       redirect_to admin_login_path, notice: 'please verify your email address'
     else
       flash.now[:alert] = "failed to create user"
