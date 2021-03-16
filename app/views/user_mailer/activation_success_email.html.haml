@@ -1,0 +1,16 @@
+%p
+  = "Congratz, #{@user.email}"
+%p
+  ===============================================
+
+%p
+  You have successfully activated your example.com account,
+  your email is:
+  = @user.email
+
+%p
+  To login to the site, just follow this link:
+%a{href: @url}= @url
+
+%p
+  Thanks for joining and have a great day!

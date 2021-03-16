@@ -6,9 +6,15 @@ Rails.application.routes.draw do
     get '/register', to: 'users#new'
     post '/register', to: 'users#create'
     get '/dashboards', to: 'dashboards#index'
-    resources :users
+    resources :users do
+      get :activate, on: :member
+    end
     resources :articles
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'articles#index'
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+  end
 end

@@ -13,8 +13,7 @@ class Admin::UsersController < AdminController
     @user = User.new(user_params)
     # TODO: メールがこなかった場合の対処
     if @user.save
-      # TODO: メール認証用のメール飛ばす
-      # メール認証が成功したら権限を管理者に変更してログイン可能とする
+      UserMailer.activation_needed_email(@user).deliver_now
       redirect_to admin_login_path, notice: 'please verify your email address'
     else
       flash.now[:alert] = "failed to create user"
@@ -25,6 +24,18 @@ class Admin::UsersController < AdminController
   def update; end
 
   def destroy; end
+
+  def activate
+    # TODO: メール認証が成功したら権限を管理者に変更してログイン可能とする
+    binding.pry
+    if @user = User.load_from_activation_token(params[:id])
+      @user.activate!
+      redirect_to admin_login_path, notice: 'User was successfully activated!'
+    else
+      not_authenticated
+    end
+    
+  end
 
   private
 
