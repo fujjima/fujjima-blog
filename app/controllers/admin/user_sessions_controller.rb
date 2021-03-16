@@ -1,6 +1,6 @@
 class Admin::UserSessionsController < AdminController
   skip_before_action :require_login
-  layout false
+  layout 'admin_login'
 
   def new; end
 

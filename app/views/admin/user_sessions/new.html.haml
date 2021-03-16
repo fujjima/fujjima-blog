@@ -17,7 +17,7 @@
               = f.label :password
               = f.password_field :password, class: 'form-control'
             = f.submit "Login", class: 'btn btn-primary'
+          %br
           %p.mb-0
             %a{:href => "forgot-password.html"} I forgot my password
-          %p.mb-1
-            = link_to 'Register a new membership', admin_register_path
+          = link_to 'Register a new membership', admin_register_path
