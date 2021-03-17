@@ -1,0 +1,23 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %title Log in
+  %body.hold-transition.login-page
+    .login-box
+      .card
+        .card-body.login-card-body
+          %p.login-box-msg Sign in to start your session
+          = form_with url: admin_login_path, method: :post, local: true do |f|
+            .form-group
+              = f.label :email
+              = f.text_field :email, class: 'form-control'
+            .form-group
+              = f.label :password
+              = f.password_field :password, class: 'form-control'
+            = f.submit "Login", class: 'btn btn-primary'
+          %br
+          %p.mb-0
+            %a{:href => "forgot-password.html"} I forgot my password
+          = link_to 'Register a new membership', admin_register_path

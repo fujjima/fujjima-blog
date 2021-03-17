@@ -20,7 +20,7 @@
           Add icons to the links using the .nav-icon class
           with font-awesome or any other icon font library
         %li.nav-item
-          = link_to admin_root_path, class: "nav-link #{active_link('dashboards', 'index')}" do
+          = link_to admin_dashboards_path, class: "nav-link #{active_link('dashboards', 'index')}" do
             %i.nav-icon.fas.fa-tachometer-alt
             %p
               Dashboard

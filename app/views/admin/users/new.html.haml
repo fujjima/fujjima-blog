@@ -1,0 +1,24 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %title Register
+  %body.hold-transition.register-page
+    .register-box
+      .card
+        .card-body.register-card-body
+          %p.login-box-msg Register a new membership
+          = form_with model: [:admin, @user], local: true do |f|
+            .form-group
+              = f.label :email
+              = f.text_field :email, class: 'form-control'
+            .form-group
+              = f.label :password
+              = f.password_field :password, class: 'form-control'
+            -# .form-group
+            -#   = f.label :password
+            -#   = f.password_field :password, class: 'form-control'
+            = f.submit "Register", class: 'btn btn-primary'
+          %br
+          = link_to 'I already have a membership', admin_login_path
