@@ -34,5 +34,10 @@
             %i.nav-icon.far.fa-file
             %p
               New Article
+        %li.nav-item
+          = link_to admin_tags_index_path, class: "nav-link #{active_link('tags', 'index')}" do
+            %i.nav-icon.fas.fa-tags
+            %p
+              Tags
     / /.sidebar-menu
   / /.sidebar
