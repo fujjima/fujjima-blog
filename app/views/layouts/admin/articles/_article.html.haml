@@ -4,8 +4,7 @@
     %td= article.title
     %td= article.text
     %td= content_tag :span, article.published ? 'published' : 'draft', class: "badge badge-#{article.published ? 'primary' : 'warning'}"
-    %td= fotmat_date(article.created_at)
-    %td= fotmat_date(article.updated_at)
+    %td= fotmat_date(article.published_at)
     %td
       = link_to edit_admin_article_path(article.id) do
         = fa_icon 'edit'
