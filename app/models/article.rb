@@ -1,4 +1,6 @@
 class Article < ApplicationRecord
+  # has_one :categories, through: :article_categories
+
   validates :published, inclusion: [true, false]
   validates :slug, presence: true
 
