@@ -17,6 +17,6 @@ class Admin::UserSessionsController < AdminController
 
   def destroy
     logout
-    redirect_to admin_login_path
+    redirect_to admin_login_path, notice: 'sucessed to logout'
   end
 end

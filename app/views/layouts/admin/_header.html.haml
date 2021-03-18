@@ -3,10 +3,6 @@
   %li.nav-item
     %a.nav-link{"data-widget" => "pushmenu", href: "#", role: "button"}
       %i.fas.fa-bars
-  %li.nav-item.d-none.d-sm-inline-block
-    %a.nav-link{href: "index3.html"} Home
-  %li.nav-item.d-none.d-sm-inline-block
-    %a.nav-link{href: "#"} Contact
 / SEARCH FORM
 %form.form-inline.ml-3
   .input-group.input-group-sm
@@ -18,32 +14,21 @@
 %ul.navbar-nav.ml-auto
   / Messages Dropdown Menu
   / Notifications Dropdown Menu
-  %li.nav-item.dropdown
-    %a.nav-link{"data-toggle" => "dropdown", href: "#"}
-      %i.far.fa-bell
-      %span.badge.badge-warning.navbar-badge 15
-    .dropdown-menu.dropdown-menu-lg.dropdown-menu-right
-      %span.dropdown-header 15 Notifications
-      .dropdown-divider
-      %a.dropdown-item{href: "#"}
-        %i.fas.fa-envelope.mr-2
-        4 new messages
-        %span.float-right.text-muted.text-sm 3 mins
-      .dropdown-divider
-      %a.dropdown-item{href: "#"}
-        %i.fas.fa-users.mr-2
-        8 friend requests
-        %span.float-right.text-muted.text-sm 12 hours
-      .dropdown-divider
-      %a.dropdown-item{href: "#"}
-        %i.fas.fa-file.mr-2
-        3 new reports
-        %span.float-right.text-muted.text-sm 2 days
-      .dropdown-divider
-      %a.dropdown-item.dropdown-footer{href: "#"} See All Notifications
   %li.nav-item
     %a.nav-link{"data-widget" => "fullscreen", href: "#", role: "button"}
       %i.fas.fa-expand-arrows-alt
-  %li.nav-item
-    %a.nav-link{"data-slide" => "true", "data-widget" => "control-sidebar", href: "#", role: "button"}
-      %i.fas.fa-th-large
+  %li.nav-item.dropdown
+    %a.nav-link{"data-toggle": "dropdown"}
+      %i.fas.fal.fa-user
+    .dropdown-menu.dropdown-menu-lg.dropdown-menu-right
+      .card.border-0{:style => "width: 18rem;"}
+        .bg-image.hover-overlay.ripple{"data-mdb-ripple-color" => "light"}
+          %img.img-fluid{:src => "https://mdbootstrap.com/img/new/standard/nature/111.jpg"}/
+          %a{:href => "#!"}
+            .mask{:style => "background-color: rgba(251, 251, 251, 0.15)"}
+        .card-body
+          -# %h5.card-title Card title
+          %p.card-text.text-center
+            = current_user.email
+          %br
+          = link_to "Logout", admin_logout_path, method: :post, class: 'btn btn-primary'
