@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'tags/new'
-  get 'tags/index'
-  get 'tags/destroy'
   namespace :admin do
     get '/login', to: 'user_sessions#new'
     post '/login', to: 'user_sessions#create'
