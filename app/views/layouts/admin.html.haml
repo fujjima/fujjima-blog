@@ -7,13 +7,12 @@
     = csp_meta_tag
     = stylesheet_pack_tag 'admin', media: 'all'
     = javascript_pack_tag 'admin'
-  -# 使用するcss,jsは共通
-  -# そのため、admin, loginで共通のテンプレートファイルを使用したい
+  -# TODO: admin, loginで共通のテンプレートファイルを使用したい
   %body.hold-transition.sidebar-mini
     .wrapper
       = render 'layouts/admin/sidebar'
-      -# %nav.main-header.navbar.navbar-expand.navbar-white.navbar-light
-      -#   = render 'layouts/header'
+      %nav.main-header.navbar.navbar-expand.navbar-white.navbar-light
+        = render 'layouts/admin/header'
       .content-wrapper
         - flash.each do |key, value|
           - key = 'info' if key == 'notice'
