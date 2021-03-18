@@ -6,7 +6,7 @@ class Admin::ArticlesController < AdminController
   end
 
   def index
-    @articles = Article.all
+    @articles = Article.order(:id)
   end
 
   def edit; end
