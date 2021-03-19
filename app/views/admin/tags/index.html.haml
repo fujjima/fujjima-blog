@@ -1,2 +1,20 @@
-%h1 Admin::Tags#index
-%p Find me in app/views/admin/tags/index.html.haml
+-# tagify
+%script{:src => "https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"}
+%script{:src => "https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"}
+%link{:href => "https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css", :rel => "stylesheet", :type => "text/css"}
+
+= javascript_pack_tag 'admin/tags/index'
+
+= form_with url: admin_tags_path, method: :post, local: true do |f|
+  -# tagsエリア内に初期表示できるようにする
+  -# 送信時に配列として送信
+  -# tags[]
+  .form-group
+    = f.label :tags
+    = f.text_area :tags, class: 'form-control', placeholder: @tags_name, name: 'tags'
+
+
+
+
+-# 記事ページでは、タグの付け替えのみ
+-# タグ選択の際には、既存タグからの選択（autocomplete）ができるようにする
