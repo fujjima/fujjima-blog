@@ -6,15 +6,11 @@
 = javascript_pack_tag 'admin/tags/index'
 
 = form_with url: admin_tags_path, method: :post, local: true do |f|
-  -# tagsエリア内に初期表示できるようにする
-  -# 送信時に配列として送信
+  -# タグ選択の際には、既存タグからの選択（autocomplete）ができるようにする
   -# tags[]
   .form-group
     = f.label :tags
-    = f.text_area :tags, class: 'form-control', placeholder: @tags_name, name: 'tags'
-
-
-
-
--# 記事ページでは、タグの付け替えのみ
--# タグ選択の際には、既存タグからの選択（autocomplete）ができるようにする
+    -# classにform-controleを指定するとtagifyのスタイル正常に適用されない
+    -# submit時にtext_areaの内容を編集することは可能か
+    = f.text_area :tags, value: @tag_names, placeholder: 'tag name', name: 'tags'
+  = f.submit "更新する", class: 'btn btn-primary'
