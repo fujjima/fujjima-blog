@@ -1,3 +1,5 @@
+= javascript_pack_tag 'admin/tags/tag_form'
+
 = form_with model: [:admin, article], local: true do |f|
   .form-group
     = f.label :title
@@ -8,6 +10,9 @@
   .form-group
     = f.label :published
     = f.select :published, [['publish', true], ['draft', false]], {}, class: 'form-control'
+  .form-group
+    = f.label :tags
+    = f.text_area :tags, value: @tag_names, placeholder: 'tag name', name: 'tags'
   .form-group
     = f.label :text
     .row

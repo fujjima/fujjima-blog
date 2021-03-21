@@ -1,9 +1,4 @@
--# tagify
-%script{:src => "https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"}
-%script{:src => "https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"}
-%link{:href => "https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css", :rel => "stylesheet", :type => "text/css"}
-
-= javascript_pack_tag 'admin/tags/index'
+= javascript_pack_tag 'admin/tags/tag_form'
 
 = form_with url: admin_tags_path, method: :post, local: true do |f|
   -# タグ選択の際には、既存タグからの選択（autocomplete）ができるようにする
