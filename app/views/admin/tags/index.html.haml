@@ -1,11 +1,8 @@
 = javascript_pack_tag 'admin/tags/tag_form'
 
 = form_with url: admin_tags_path, method: :post, local: true do |f|
-  -# タグ選択の際には、既存タグからの選択（autocomplete）ができるようにする
-  -# tags[]
   .form-group
     = f.label :tags
     -# classにform-controleを指定するとtagifyのスタイル正常に適用されない
-    -# submit時にtext_areaの内容を編集することは可能か
-    = f.text_area :tags, value: @tag_names, placeholder: 'tag name', name: 'tags'
+    = f.text_area :tags, value: @tag_names, placeholder: 'tag name', name: 'tags', id: 'tag-area', data: {tag: @tag_names}
   = f.submit "更新する", class: 'btn btn-primary'

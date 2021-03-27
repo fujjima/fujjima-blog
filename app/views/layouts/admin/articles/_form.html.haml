@@ -12,7 +12,7 @@
     = f.select :published, [['publish', true], ['draft', false]], {}, class: 'form-control'
   .form-group
     = f.label :tags
-    = f.text_area :tags, value: @tag_names, placeholder: 'tag name', name: 'tags'
+    = f.text_area :tags, value: article.tags.pluck(:name), placeholder: 'tag name', name: 'tags', id: 'tag-area', data: {tag: @tag_names}
   .form-group
     = f.label :text
     .row
