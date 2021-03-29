@@ -15,10 +15,6 @@ class Tag < ApplicationRecord
       insert_all(tags_to_hash_for_insert(tags))
     end
 
-    def new_tags(tag_names_ary)
-      Tag.where(name: tag_names_ary)
-    end
-
     private
 
     def tags_to_hash_for_insert(ary)
