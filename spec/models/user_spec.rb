@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   before do
-    @user = build(:user)
+    @user = build(:user, :admin)
   end
 
   describe 'validate' do
@@ -17,9 +17,10 @@ RSpec.describe User, type: :model do
 
     it 'ユーザー数が2以上だとNG' do
       @user.save!
-      user2 = build(:user2)
+      new_user = build(:user, :admin)
+      new_user.email = 'newuser@test.com'
       expect do
-        user2.save!
+        new_user.save!
       end.to raise_error(ActiveRecord::RecordInvalid, 'Validation failed: User 既に上限ユーザー数に達しています')
     end
   end
