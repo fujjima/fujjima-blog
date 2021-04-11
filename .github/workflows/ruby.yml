@@ -56,7 +56,6 @@ jobs:
 
     - name: setup DB
       run: |
-        cp config/database.yml.github-actions config/database.yml
         bundle exec rails yarn:install db:setup assets:precompile
       env:
         RAILS_ENV: test
