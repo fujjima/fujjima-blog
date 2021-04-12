@@ -7,27 +7,60 @@
 
 name: Run Rspec
 
-on:
-  push:
-    branches: [ main ]
+on: push
 
 jobs:
-  test:
-
+  run_spec:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
     strategy:
       matrix:
-        ruby-version: ['2.7']
+        ruby-version: ['2.7.2']
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
     - name: Set up Ruby
-    # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
-    # change this to (see https://github.com/ruby/setup-ruby#versioning):
       uses: ruby/setup-ruby@v1
-    # uses: ruby/setup-ruby@473e4d8fe5dd94ee328fdfca9f8c9c7afc9dae5e
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+
+    - name: Install Node.js and Yarn
+      run: |
+        sudo curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+        sudo echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+        sudo curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
+        sudo apt update && sudo apt install -y nodejs yarn
+
+    - name: Install dependencies
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+
+    - name: Install library for postgres
+      run: sudo apt install -y libpq-dev
+
+    - name: setup DB
+      run: |
+        bundle exec rails yarn:install db:setup
+      env:
+        RAILS_ENV: test
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+
     - name: Run Rspec
-      run: rspec
+      run: bundle exec rspec
