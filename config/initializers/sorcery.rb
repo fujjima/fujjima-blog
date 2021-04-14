@@ -344,6 +344,8 @@ Rails.application.config.sorcery.configure do |config|
     #
     user.user_activation_mailer = UserMailer
 
+    user.reset_password_mailer = UserMailer
+
     # When true, sorcery will not automatically
     # send the activation details email, and allow you to
     # manually handle how and when the email is sent.
