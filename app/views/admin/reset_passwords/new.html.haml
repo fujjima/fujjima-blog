@@ -1,0 +1,18 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %title ResetPassword
+  %body.hold-transition.register-page
+    .register-box
+      .card
+        .card-body.register-card-body
+          %p.login-box-msg Reset your password
+          = form_with model: [:admin, @user], local: true do |f|
+            .form-group
+              = f.label :email
+              = f.text_field :email, class: 'form-control'
+            = f.submit "Reset", class: 'btn btn-primary'
+          %br
+          = link_to 'back', admin_login_path
