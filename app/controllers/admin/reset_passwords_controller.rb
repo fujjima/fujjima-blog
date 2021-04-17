@@ -11,7 +11,7 @@ class Admin::ResetPasswordsController < AdminController
     user = User.find_by(email: params[:email])
     user&.deliver_reset_password_instructions!
 
-    redirect_to login_path, success: "Successed"
+    redirect_to admin_login_path, notice: "Successed"
   end
 
   # パスワードリセット実施

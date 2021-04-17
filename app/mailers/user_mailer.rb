@@ -28,8 +28,7 @@ class UserMailer < ApplicationMailer
 
   def reset_password_email(user)
     @user = user
-    # TODO: edit_password_reset_urlをroutes上で定義しないといけない
-    @url  = edit_password_reset_url(user.reset_password_token)
+    @url  = edit_admin_reset_password_url(user.reset_password_token)
 
     mail(to: user.email, subject: 'reset your password')
   end

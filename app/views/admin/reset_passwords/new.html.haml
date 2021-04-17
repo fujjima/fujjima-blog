@@ -9,7 +9,7 @@
       .card
         .card-body.register-card-body
           %p.login-box-msg Reset your password
-          = form_with model: [:admin, @user], local: true do |f|
+          = form_with url: admin_reset_passwords_path, local: true do |f|
             .form-group
               = f.label :email
               = f.text_field :email, class: 'form-control'
