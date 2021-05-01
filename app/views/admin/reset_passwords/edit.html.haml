@@ -5,7 +5,7 @@
     .card
       .card-body.register-card-body
         %p.login-box-msg Reset your password
-        = form_with url: admin_reset_password_path, local: true, id: 'reset-form' do |f|
+        = form_with url: admin_reset_password_path, method: :patch, local: true, id: 'reset-form' do |f|
           .form-group
             = f.label :password
             = f.password_field :password, class: 'form-control'
