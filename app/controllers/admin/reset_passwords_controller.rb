@@ -2,13 +2,13 @@ class Admin::ResetPasswordsController < AdminController
   skip_before_action :require_login
   layout 'admin_login'
 
-  # パスワードリセット申請
   def new
     @user = User.new
   end
 
   def create
     user = User.find_by(email: params[:email])
+    # TODO: userがいない場合にエラーを出す
     user&.deliver_reset_password_instructions!
 
     redirect_to admin_login_path, notice: "Successed"
@@ -32,11 +32,5 @@ class Admin::ResetPasswordsController < AdminController
       flash.now[:danger] = "failed"
       render :edit
     end
-  end
-
-  private
-
-  def user_params
-    params.require(:user).permit()
   end
 end
