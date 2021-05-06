@@ -25,7 +25,7 @@ class Admin::ResetPasswordsController < AdminController
     @user = User.load_from_reset_password_token(params[:id])
     return not_authenticated if @user.blank?
 
-    # TODO: back側でも一応passwordと再入力の項目が一致しているかを確認する。
+    @user.password_confirmation = params[:password_confirmation]
     if @user.change_password(params[:password])
       redirect_to admin_login_path, notice: "sucessed"
     else
