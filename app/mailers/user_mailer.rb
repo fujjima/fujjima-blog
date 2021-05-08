@@ -25,4 +25,11 @@ class UserMailer < ApplicationMailer
 
     mail(to: user.email, subject: 'Your account is now activated')
   end
+
+  def reset_password_email(user)
+    @user = user
+    @url  = edit_admin_reset_password_url(user.reset_password_token)
+
+    mail(to: user.email, subject: 'reset your password')
+  end
 end

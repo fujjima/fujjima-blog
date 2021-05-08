@@ -1,18 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Article, type: :model do
-  before do
-    @article = build(:article)
-  end
+  let(:article){ create :article }
 
   describe 'validate' do
     it 'slugが存在すればOK' do
-      expect(@article.valid?).to eq(true)
+      expect(article.valid?).to eq(true)
     end
 
     it 'slugが空欄だとNG' do
-      @article.slug = ''
-      expect(@article.valid?).to eq(false)
+      article.slug = ''
+      expect(article.valid?).to eq(false)
     end
 
     it 'publishedがfalseからtrueに変更された場合、published_atが更新される' do

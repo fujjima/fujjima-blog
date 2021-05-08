@@ -1,0 +1,18 @@
+= javascript_pack_tag 'admin/reset_passwords/edit'
+
+%body.hold-transition.register-page
+  .register-box
+    .card
+      .card-body.register-card-body
+        %p.login-box-msg Reset your password
+        = form_with url: admin_reset_password_path, method: :patch, local: true, id: 'reset-form' do |f|
+          .form-group
+            = f.label :password
+            = f.password_field :password, class: 'form-control'
+          .form-group
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, class: 'form-control'
+          -# パスワード入力値と確認値が一致しないとボタンが有効にならない or エラーメッセージが表示される
+          = f.submit "Reset", class: 'btn btn-primary', id: 'reset-form-submit-button'
+        %br
+        = link_to 'back', admin_login_path

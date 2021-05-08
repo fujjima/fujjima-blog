@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :users do
       get :activate, on: :member
     end
+    resources :reset_passwords, only: %w[new create edit update]
     resources :articles
     resources :tags, only: %w[index] do
       post :update, on: :collection
