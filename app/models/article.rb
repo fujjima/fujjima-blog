@@ -6,6 +6,7 @@ class Article < ApplicationRecord
   validates :slug, presence: true
 
   before_save :update_published_at, if: :will_save_change_to_published?
+  scope :published, -> { where(published: true) }
 
   private
 

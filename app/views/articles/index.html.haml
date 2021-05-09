@@ -1,0 +1,10 @@
+-# markdown
+%script{:src => "https://cdn.jsdelivr.net/npm/marked/marked.min.js"}
+
+= javascript_pack_tag 'articles/index'
+
+-# 記事表示部分
+= render partial: 'article', collection: @articles
+
+-# left_sidebar（月毎遷移）
+-# 画面最下部 ページネーション
