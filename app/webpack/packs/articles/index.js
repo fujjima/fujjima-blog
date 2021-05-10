@@ -1,2 +1,2 @@
-import '../admin/articles/markdown.js';
+import './blogText.js';
 // import 'src/stylesheets/admin/articles/edit.scss';
