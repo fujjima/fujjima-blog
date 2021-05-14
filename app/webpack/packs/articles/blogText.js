@@ -7,9 +7,10 @@ $(function () {
       return hljs.highlightAuto(code, [lang]).value;
     }
   });
-  var markdown = $('#general-articles-text').text();
 
-  var html = marked(markdown)
-
-  $('#general-articles-text').html(html);
+  $('.article-text').each(function (index, val) {
+    var text = $(val).text();
+    var html = marked(text);
+    $(val).html(html);
+  })
 });

@@ -7,8 +7,14 @@
 
 = javascript_pack_tag 'articles/index'
 
--# 記事表示部分
-= render partial: 'article', collection: @articles
+-# TODO: header部分（navigator、topページ、home、タグなど）
+%div.container
 
--# left_sidebar（月毎遷移）
--# 画面最下部 ページネーション
+%main.container
+  = render partial: 'article', collection: @articles
+
+-# TODO: 画面最下部 ページネーション
+
+
+-# TODO: 著作権とか（ここでは全体に適用したいのでapplicationに移植する）
+%footer.container
