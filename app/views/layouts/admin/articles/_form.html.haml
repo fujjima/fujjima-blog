@@ -10,6 +10,7 @@
   .form-group
     = f.label :published
     = f.select :published, [['publish', true], ['draft', false]], {}, class: 'form-control'
+  -# TODO: タグのリストが表示されないので調査する
   .form-group
     = f.label :tags
     = f.text_area :tags, value: article.tags.pluck(:name), placeholder: 'tag name', name: 'tags', id: 'tag-area', data: {tag: @tag_names}

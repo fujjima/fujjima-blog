@@ -12,7 +12,9 @@ class Tag < ApplicationRecord
     # tagsにはタグ名の配列を渡す
     # ex) [tag1, tag2]
     def insert_new_tag(tags)
-      insert_all(tags_to_hash_for_insert(tags))
+      return if tags.empty?
+
+      insert_all tags_to_hash_for_insert(tags)
     end
 
     private

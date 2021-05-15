@@ -1,7 +1,17 @@
 class ArticlesController < ApplicationController
   def index
-    # 1画面に7〜8記事ずつ記載する
-    # 1記事の表示範囲は文字数で
-    @articles = Article.published
+    # TODO: 1画面に6〜7記事ずつ記載する
+    @articles = Article.published.order(published_at: 'DESC')
+    @archives = Article.published
+                       .group_by_yearly
+                       .map { |year, articles| { year: year, total: articles.count, months: aggregate_by_month(articles) } }
+
+  end
+
+  private
+
+  def aggregate_by_month(articles)
+    articles.group_by { |article| article.published_at.strftime('%Y-%m') }
+            .map { |month, blogs| { month: month, count: blogs.count } }
   end
 end

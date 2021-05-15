@@ -11,7 +11,34 @@
 %div.container
 
 %main.container
-  = render partial: 'article', collection: @articles
+  %div.row
+    %div.col-md-8.blog-main
+      = render partial: 'article', collection: @articles
+    -# TODO: 月別アーカイブ部分
+    %aside.col-md-4.blog-sidebar
+      %h3
+        月別アーカイブ
+      %div{data: { toggle: 'collapse', target: '#demo' }}
+        ▶︎ 2020 (5)
+      %div#demo.collapse
+        -# TODO: li>aの構造にする
+        -# 選択された月の記事のみを表示した画面に遷移するようにしたいので、aタグにしておく
+        -# URLは /archives/year/month (/2021/3 のような)
+        %p
+          2020/12 (2)
+        %p
+          2020/11 (1)
+        %p
+          2020/9 (2)
+      %div{data: { toggle: 'collapse', target: '#demo2' }}
+        ▶︎ 2019 (5)
+      %div#demo2.collapse
+        %p
+          2020/12 (2)
+        %p
+          2020/11 (1)
+        %p
+          2020/9 (2)
 
 -# TODO: 画面最下部 ページネーション
 
