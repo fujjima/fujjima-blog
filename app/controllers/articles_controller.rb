@@ -11,7 +11,9 @@ class ArticlesController < ApplicationController
   private
 
   def aggregate_by_month(articles)
-    articles.group_by { |article| article.published_at.strftime('%Y-%m') }
+    articles.group_by { |article| article.published_at.strftime('%Y/%m') }
             .map { |month, blogs| { month: month, count: blogs.count } }
+            .sort_by { |result| result[:month] }
+            .reverse!
   end
 end

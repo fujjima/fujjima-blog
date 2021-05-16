@@ -1,0 +1,12 @@
+%aside.col-md-4.blog-sidebar
+  %h4
+    月別アーカイブ
+  - @archives.map do |archive|
+    %div{data: { toggle: 'collapse', target: "#archive-#{archive[:year]}" }}
+      %p= "▶︎ #{archive[:year]} (#{archive[:total]})"
+    %div{ class: 'collapse', id: "archive-#{archive[:year]}" }
+      -# TODO: li>aの構造にする
+      -# TODO: 選択された月の記事のみを表示した画面に遷移するようにしたいので、aタグにしておく
+      -# URLは /archives/year/month (/2021/3 のような)
+      - archive[:months].map do |monthly_archive|
+        %p= "#{monthly_archive[:month]} (#{monthly_archive[:count]})"
