@@ -8,6 +8,12 @@ class ArticlesController < ApplicationController
 
   end
 
+  def archives
+  end
+
+  def tags
+  end
+
   private
 
   def aggregate_by_month(articles)

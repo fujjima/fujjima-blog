@@ -18,6 +18,19 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'articles#index'
 
+  get '/archives/:year', to: 'articles#show', constraints: { year: /\d{4}/ }
+
+  get '/archives/:year/:month', to: 'articles#show', constraints: {
+    year: /\d{4}/,
+    month: /\d{1,2}/
+  }
+
+  # タグの詳細画面はなく、記事のタグによる絞り込み機能のみがある
+  get '/tags/:tag_name', to: 'articles#tags'
+
+  # タグに関する画面はタグ一覧画面のみ
+  resources :tags, only: %w[index]
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end
