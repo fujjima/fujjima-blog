@@ -9,6 +9,11 @@ class ArticlesController < ApplicationController
   end
 
   def archives
+    @archives = if params[:year] && params[:month]
+                  Article.published.get_by_month(params[:year], params[:month])
+                elsif params[:year] && !params[:month]
+                  Article.published.get_by_year(params[:year])
+                end
   end
 
   def tags
