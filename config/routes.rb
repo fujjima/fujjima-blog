@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'articles#index'
 
-  get '/archives/:year', to: 'articles#show', constraints: { year: /\d{4}/ }
+  get '/archives/:year', to: 'articles#archives', constraints: { year: /\d{4}/ }
 
-  get '/archives/:year/:month', to: 'articles#show', constraints: {
+  get '/archives/:year/:month', to: 'articles#archives', constraints: {
     year: /\d{4}/,
     month: /\d{1,2}/
   }
