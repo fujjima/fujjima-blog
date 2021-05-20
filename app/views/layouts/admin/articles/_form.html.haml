@@ -10,6 +10,7 @@
   .form-group
     = f.label :published
     = f.select :published, [['publish', true], ['draft', false]], {}, class: 'form-control'
+  -# TODO: タグのリストが表示されないので調査する
   .form-group
     = f.label :tags
     = f.text_area :tags, value: article.tags.pluck(:name), placeholder: 'tag name', name: 'tags', id: 'tag-area', data: {tag: @tag_names}
@@ -17,8 +18,8 @@
     = f.label :text
     .row
       .col-md-6
-        = f.text_area :text, id: 'articleText', class: 'form-control', size: '30x30'
+        = f.text_area :text, id: 'article-text', class: 'form-control', size: '30x30'
       .col-md-6.border
-        #markdown_preview
+        #markdown-preview
   -# TODO: i18nでなんとかしたい
   = f.submit "更新する", class: 'btn btn-primary'

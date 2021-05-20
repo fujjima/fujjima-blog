@@ -1,10 +1,10 @@
 class Admin::ArticlesController < AdminController
   include Taggable
   before_action :set_article, only: %w[edit update destroy]
+  before_action :tag_names, only: %w[new edit]
 
   def new
     @article = Article.new
-    @tags = Tag.all
   end
 
   def index
@@ -12,11 +12,10 @@ class Admin::ArticlesController < AdminController
                        .order(:id)
   end
 
-  def edit
-    @tag_names = Tag.pluck(:name)
-  end
+  def edit; end
 
   def create
+    # TODO: 新規作成時にタグが紐づけられていないので修正
     @article = Article.new(article_params)
     if @article.save
       redirect_to admin_articles_path, notice: "successed to create"
@@ -28,7 +27,6 @@ class Admin::ArticlesController < AdminController
 
   def update
     ActiveRecord::Base.transaction do
-      # TODO: タグの新規作成を待つ必要性とその方法
       tag_names_ary = tag_names_to_ary(params[:tags])
       Tag.insert_new_tag(tag_names_ary)
       @article.tags.replace(from_tag_names_ary_to_tag_instances_ary(tag_names_ary))
@@ -61,5 +59,9 @@ class Admin::ArticlesController < AdminController
 
   def set_article
     @article = Article.find(params[:id])
+  end
+
+  def tag_names
+    @tag_names = Tag.pluck(:name)
   end
 end

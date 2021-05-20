@@ -8,14 +8,14 @@ const preview = function (sel) {
     }
   });
   let html = marked(sel.val());
-  $('#markdown_preview').html(html);
+  $('#markdown-preview').html(html);
 }
 
 $(function () {
   // 遷移、ロード時に実行させる
-  preview($('#articleText'));
+  preview($('#article-text'));
 
-  $('#articleText').on(
+  $('#article-text').on(
     "keyup", function () {
       let sel = $(this)
       preview(sel)

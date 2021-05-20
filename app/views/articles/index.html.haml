@@ -1,0 +1,21 @@
+-# markdown
+%script{:src => "https://cdn.jsdelivr.net/npm/marked/marked.min.js"}
+
+-# highlight.js
+%link{:href => "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/srcery.min.css", :rel => "stylesheet"}/
+%script{:src => "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"}
+
+= javascript_pack_tag 'articles/index'
+
+%main.container
+  %div.row
+    %div.col-md-8.blog-main
+      = render partial: 'article', collection: @articles
+    -# TODO: 月別アーカイブ部分
+    = render 'sidebar'
+
+-# TODO: 画面最下部 ページネーション
+
+
+-# TODO: 著作権とか（ここでは全体に適用したいのでapplicationに移植する）
+%footer.container
