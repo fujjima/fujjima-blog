@@ -1,0 +1,12 @@
+%aside.col-md-4.blog-sidebar
+  %h4
+    月別アーカイブ
+  - @archives.map do |archive|
+    - cache archive do
+      %div{data: { toggle: 'collapse', target: "#archive-#{archive[:year]}" }, style: "display:inline" }
+        %span.show-button ▶︎
+      = link_to "#{archive[:year]} (#{archive[:total]})", "/archives/#{archive[:year]}"
+      %div
+        %div{ class: 'collapse', id: "archive-#{archive[:year]}" }
+          - archive[:months].map do |monthly_archive|
+            %div= link_to "#{monthly_archive[:month]} (#{monthly_archive[:count]})", "/archives/#{monthly_archive[:year]}#{monthly_archive[:month]}"
