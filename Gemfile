@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'font-awesome-rails'
 gem 'haml-rails'
+gem 'memoist'
 gem 'sorcery'
 
 group :development, :test do
