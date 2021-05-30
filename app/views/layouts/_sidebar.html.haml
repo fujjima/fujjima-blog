@@ -2,10 +2,12 @@
   %h4
     月別アーカイブ
   - load_archives.map do |archive|
-    %div{data: { toggle: 'collapse', target: "#archive-#{archive[:year]}" }, style: "display:inline" }
-      %span.show-button ▶︎
-    = link_to "#{archive[:year]} (#{archive[:total]})", "/archives/#{archive[:year]}"
-    %div
-      %div{ class: 'collapse', id: "archive-#{archive[:year]}" }
-        - archive[:months].map do |monthly_archive|
-          %div= link_to "#{monthly_archive[:month]} (#{monthly_archive[:count]})", "/archives/#{monthly_archive[:year]}#{monthly_archive[:month]}"
+    %li.archive-module-year
+      %div{data: { toggle: 'collapse', target: "#archive-#{archive[:year]}" }, class: 'year-toggle'}
+        %span.show-button ▶︎
+      = link_to "#{archive[:year]} (#{archive[:total]})", "/archives/#{archive[:year]}"
+      %div
+        %div{ class: 'collapse', id: "archive-#{archive[:year]}" }
+          - archive[:months].map do |monthly_archive|
+            %div.month-archive
+              = link_to "#{monthly_archive[:month]} (#{monthly_archive[:count]})", "/archives/#{monthly_archive[:year]}#{monthly_archive[:month]}"
