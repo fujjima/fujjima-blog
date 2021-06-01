@@ -8,8 +8,12 @@
     = stylesheet_pack_tag 'application', media: 'all'
     = javascript_pack_tag 'application'
   = render 'layouts/header'
-  %body.hold-transition.sidebar-mini
+  %body
     .wrapper
       .content-wrapper
         .content
-          = yield
+          %main.container
+            %div.row
+              %div.col-md-8.blog-main
+                = yield
+              = render 'layouts/sidebar'
