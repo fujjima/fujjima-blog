@@ -1,0 +1,25 @@
+.pagination>li>a {          
+  border: none;
+  color: #696969;
+}
+
+.pagination > .page-item {
+  > .page-link{
+    &:hover{
+      background-color: white;
+    }
+    &:focus{
+      outline: 0;
+      box-shadow: none;
+    }
+  }
+
+  // .page_item.activeの指定
+  &.active{
+    > .page-link{
+      background-color: gray;
+      opacity: 0.5;
+      border-radius: 40%;
+     }
+  }
+}
