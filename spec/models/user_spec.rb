@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
       admin1.save
       expect do
         admin2.save!
-      end.to raise_error(ActiveRecord::RecordInvalid, 'Validation failed: User 既に上限ユーザー数に達しています')
+      end.to raise_error(ActiveRecord::RecordInvalid, /既に上限ユーザー数に達しています/)
     end
   end
 end

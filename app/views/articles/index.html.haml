@@ -12,7 +12,7 @@
     %div.col-md-8.blog-main
       = render partial: 'article', collection: @articles
 
--# TODO: 画面最下部 ページネーション
+= paginate @articles
 
 
 -# TODO: 著作権とか（ここでは全体に適用したいのでapplicationに移植する）
