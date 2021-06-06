@@ -19,3 +19,6 @@
   %br
   %h4
     タグ
+  - load_tags.map do |tag|
+    %div
+      %a.tag-name= tag.name

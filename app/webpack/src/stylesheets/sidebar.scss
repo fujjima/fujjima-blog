@@ -15,3 +15,21 @@
 .hide{
   display: none;
 }
+
+.tag-name {
+  // 枠を文字の大きさに合わせるためinline-blockを設定している
+  cursor: pointer;
+	display: inline-block;
+	margin: 0 .1em .6em 0;
+	padding: .6em;
+	line-height: 1;
+	color: #0000ee;
+	// background-color: #fff;
+	border: 1px solid #0000ee;
+
+  &:hover{
+    text-decoration: none;
+    background-color: rgba(0, 0, 238, 0.2);
+    color: #0000ee;
+  }
+}
