@@ -14,3 +14,11 @@
           - archive[:months].map do |monthly_archive|
             %div.month-archive
               = link_to "#{monthly_archive[:month]} (#{monthly_archive[:count]})", "/archives/#{monthly_archive[:year]}#{monthly_archive[:month]}"
+
+  %br
+  %br
+  %h4
+    タグ
+  - load_tags.map do |tag|
+    %div
+      = link_to "#{tag.name}", "/tags/#{tag.name}", class: 'tag-name'
