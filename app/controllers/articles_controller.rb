@@ -1,7 +1,7 @@
 class ArticlesController < GeneralController
   PER_PAGE = 7
 
-  def index        
+  def index
     @articles = paginate(Article.published.order(published_at: 'DESC'))
   end
 
@@ -20,6 +20,7 @@ class ArticlesController < GeneralController
   end
 
   def tags
+    @articles = paginate(Article.tagged_by(params['tag_name']))
     render :index
   end
 

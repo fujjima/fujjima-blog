@@ -21,4 +21,4 @@
     タグ
   - load_tags.map do |tag|
     %div
-      %a.tag-name= tag.name
+      = link_to "#{tag.name}", "/tags/#{tag.name}", class: 'tag-name'
