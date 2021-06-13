@@ -1,13 +1,41 @@
-.blog-header{
-  padding-top: 20px;
-  padding-bottom: 30px;
+#header {
+  width: 100%;
+  background-color: lightgray;
 }
 
-.blog-title{
+#header .container {
+  overflow: hidden;
+  height: 100px;
+  // タイトル、novの文字列を縦中央に配置
+  line-height: 100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.blog-title {
+  float: left;
+  font-size: 2rem;
+  font-weight: 500;
   text-decoration: none !important;
-  color: #000000 !important;
+  color: #000000;
+  &:hover{
+    color: #000000;
+  }
 }
 
-.text-center{
-  font-size: 2.5rem;
+#header nav > ul {
+  float: right;
+  list-style: none;
+
+  li{
+    float: left;
+    margin-right: 50px;
+    &:last-child{
+      margin-right: 0;
+    }
+    > a{
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+  }
 }
