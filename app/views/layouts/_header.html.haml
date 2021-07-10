@@ -1,5 +1,14 @@
 -# TODO: navigator
-%div.container
-  %header.blog-header
-    %div.text-center
-      = link_to 'fujjima blog', root_path, class: 'blog-title'
+%header#header
+  %div.container
+    = link_to 'fujjima blog', root_path, class: 'blog-title'
+    %nav
+      %ul
+        %li
+          -# TODO: 外部のサイトにアクセスさせる
+          %a{ href: "#{root_url}career" }
+            経歴
+        %li
+          -# TODO: 外部のサイトにアクセスさせる
+          %a{ href: "#{root_url}question" }
+            問い合わせ

@@ -24,6 +24,12 @@ class ArticlesController < GeneralController
     render :index
   end
 
+  # TODO: 外部サイト作ったら消す
+  def career;  end
+
+  # TODO: 外部サイト作ったら消す
+  def question; end
+
   private
 
   # TODO: 単純にarticlesを渡すだけにしたい（並び順についてはここでよしなにやって欲しい）

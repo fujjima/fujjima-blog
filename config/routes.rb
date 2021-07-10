@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'articles#index'
+  get '/career', to: 'articles#career'
+  get '/question', to: 'articles#question'
 
   get '/archives/:year', to: 'articles#archives', constraints: { year: /\d{4}/ }
 
