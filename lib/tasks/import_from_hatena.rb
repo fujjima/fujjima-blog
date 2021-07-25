@@ -6,8 +6,6 @@ class ArticleText
   def initialize article
     @article = article
   end
-
-  # TODO: 公開ステータスのものが軒並み同じ公開日になっている？
   
   def column_mather matcher
     return if article.empty?
@@ -35,9 +33,8 @@ begin
   File.open('hatenablog.com.export.txt') do |file|
     file.read.split('--------').each do |article_text|
       # コメント部分は抽出対象に含めない
-      if article_text.match?(/COMMENT:\n[\s\S]*\n-----\n/)
-        article_text.gsub!(/COMMENT:\n[\s\S]*\n-----\n/, '')
-      end
+      article_text.gsub!(/COMMENT:\n[\s\S]*\n-----\n/, '')
+      
       # 一記事ずつ配列に格納（文字列）
       articles << article_text
     end
@@ -56,7 +53,6 @@ import_datas = articles.map do |article_text|
     published_at: date_convert(article.column_mather("DATE")),
     published: article.column_mather("STATUS") == "Publish",
     text: article.test_body_mather,
-    # slugは仮置き
     slug: '',
   }
 end
