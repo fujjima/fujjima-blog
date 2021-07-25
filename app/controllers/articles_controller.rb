@@ -2,18 +2,20 @@ class ArticlesController < GeneralController
   PER_PAGE = 7
 
   def index
-    @articles = paginate(Article.published.order(published_at: 'DESC'))
+    @articles = paginate(Article.published.sort)
   end
 
   def archives
     @articles = if params[:year] && params[:month]
                   paginate(Article.published
                                   .get_by_month(params[:year], params[:month])
-                                  .sort_by(&:published_at))
+                                  .sort_by(&:published_at)
+                                  .reverse!)
                 elsif params[:year] && !params[:month]
                   paginate(Article.published
                                   .get_by_year(params[:year])
-                                  .sort_by(&:published_at))
+                                  .sort_by(&:published_at)
+                                  .reverse!)
                 end
 
     render :index

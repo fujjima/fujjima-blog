@@ -8,9 +8,9 @@ RSpec.describe Article, type: :model do
       expect(article.valid?).to eq(true)
     end
 
-    it 'slugが空欄だとNG' do
+    it 'slugが空欄でも許容する' do
       article.slug = ''
-      expect(article.valid?).to eq(false)
+      expect(article.valid?).to be true
     end
 
     it 'publishedがfalseからtrueに変更された場合、published_atが更新される' do
