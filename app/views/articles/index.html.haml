@@ -7,10 +7,8 @@
 
 = javascript_pack_tag 'articles/index'
 
-%main.container
-  %div.row
-    %div.col-md-8.blog-main
-      = render partial: 'article', collection: @articles
+%div
+  = render partial: 'article', collection: @articles
 
 = paginate @articles
 

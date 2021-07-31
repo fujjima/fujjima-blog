@@ -1,24 +1,23 @@
 = javascript_pack_tag 'layout/sidebar'
 
-%aside.col-md-4.blog-sidebar
-  %h4
-    月別アーカイブ
-  - load_archives.map do |archive|
-    %li.archive-module-year
-      %div{data: { toggle: 'collapse', target: "#archive-#{archive[:year]}" }, class: 'year-toggle'}
-        %span.show_button ▶︎
-        %span.hide_button.hide ▼
-      = link_to "#{archive[:year]} (#{archive[:total]})", "/archives/#{archive[:year]}"
-      %div
-        %div{ class: 'collapse', id: "archive-#{archive[:year]}" }
-          - archive[:months].map do |monthly_archive|
-            %div.month-archive
-              = link_to "#{monthly_archive[:month]} (#{monthly_archive[:count]})", "/archives/#{monthly_archive[:year]}#{monthly_archive[:month]}"
-
-  %br
-  %br
-  %h4
-    タグ
-  - load_tags.map do |tag|
+%h4
+  月別アーカイブ
+- load_archives.map do |archive|
+  %li.archive-module-year
+    %div{data: { toggle: 'collapse', target: "#archive-#{archive[:year]}" }, class: 'year-toggle'}
+      %span.show_button ▶︎
+      %span.hide_button.hide ▼
+    = link_to "#{archive[:year]} (#{archive[:total]})", "/archives/#{archive[:year]}"
     %div
-      = link_to "#{tag.name}", "/tags/#{tag.name}", class: 'tag-name'
+      %div{ class: 'collapse', id: "archive-#{archive[:year]}" }
+        - archive[:months].map do |monthly_archive|
+          %div.month-archive
+            = link_to "#{monthly_archive[:month]} (#{monthly_archive[:count]})", "/archives/#{monthly_archive[:year]}#{monthly_archive[:month]}"
+
+%br
+%br
+%h4
+  タグ
+- load_tags.map do |tag|
+  %div
+    = link_to "#{tag.name}", "/tags/#{tag.name}", class: 'tag-name'

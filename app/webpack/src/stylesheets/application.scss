@@ -4,6 +4,10 @@
 @import "sidebar";
 @import "pagination";
 
+// TODO: もう少しスマートにメイン部分とサイドバーの間隔を空けたい
+aside.blog-sidebar{
+  padding-left: 50px;
+}
 
 .content-wrapper{
   margin-top: 80px;
