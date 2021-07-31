@@ -12,3 +12,10 @@ aside.blog-sidebar{
 .content-wrapper{
   margin-top: 80px;
 }
+
+// NOTE: 画像が横幅を超えないように制限する
+img {
+  // 横幅に合わせて自動縮小するが、拡大はしない
+  max-width: 100%;
+  object-fit: contain;
+}
