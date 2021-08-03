@@ -1,1 +1,1 @@
-// import 'admin-lte';
+import 'src/stylesheets/admin/articles/index.scss'
