@@ -1,4 +1,3 @@
--# markdown
 %script{:src => "https://cdn.jsdelivr.net/npm/marked/marked.min.js"}
 
 -# highlight.js
@@ -7,13 +6,10 @@
 
 = javascript_pack_tag 'articles/index'
 
-%main.container
-  %div.row
-    %div.col-md-8.blog-main
-      = render partial: 'article', collection: @articles
+%div
+  = render partial: 'article', collection: @articles
 
 = paginate @articles
 
-
--# TODO: 著作権とか（ここでは全体に適用したいのでapplicationに移植する）
+-# TODO: 著作権とか（全体に適用したいのでapplicationに移植する）
 %footer.container

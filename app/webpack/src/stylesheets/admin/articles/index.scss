@@ -1,0 +1,29 @@
+// 記事全体のスタイル
+table.table {
+  width: 100%;
+  td.id {
+    width: 5%;
+  }
+  td.title {
+    width: 20%;
+    overflow-wrap: break-word;
+  }
+  td.text {
+    word-break : break-all;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+  td.status {
+    width: 10%;
+  }
+  td.published_at {
+    width: 10%;
+  }
+  td.edit td.delete {
+    width: 5%;
+  }
+}
+
+// _article単位のスタイル

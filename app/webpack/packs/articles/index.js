@@ -1,2 +1,2 @@
 import './blogText.js';
-// import 'src/stylesheets/admin/articles/edit.scss';
+import 'src/stylesheets/articles/index.scss'

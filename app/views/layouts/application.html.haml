@@ -11,9 +11,9 @@
   %body
     .wrapper
       .content-wrapper
-        .content
-          %main.container
-            %div.row
-              %div.col-md-8.blog-main
-                = yield
+        %main.container
+          %div.row
+            %div.col-md-8.blog-main
+              = yield
+            %aside.col-md-4.blog-sidebar
               = render 'layouts/sidebar'

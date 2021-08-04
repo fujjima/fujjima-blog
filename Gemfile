@@ -22,6 +22,7 @@ gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'kaminari'
 gem 'memoist'
+gem 'rails-i18n'
 gem 'sorcery'
 
 group :development, :test do
