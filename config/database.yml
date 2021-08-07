@@ -86,5 +86,5 @@ production:
   database: fujjima_blog_production
   username: <%= ENV['HEROKU_DB_USER'] %>
   password: <%= ENV['HEROKU_DB_PASSWORD'] %>
-  url: <%= ENV['HEROKU_DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
   database: <%= ENV['HEROKU_DB_NAME'] %>
