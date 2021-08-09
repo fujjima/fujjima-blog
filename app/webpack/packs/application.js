@@ -12,7 +12,7 @@ require("channels")
 import '@fortawesome/fontawesome-free/js/all';
 import 'bootstrap';
 import 'admin-lte';
-import '../src/stylesheets/application';
+import 'src/stylesheets/application';
 // import '../src/javascript/base';
 // import '../src/stylesheets/base'
 
