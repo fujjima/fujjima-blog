@@ -1,9 +1,8 @@
 -# TODO
 -# 一記事の表示限界を定める
 %div.blog-post
-  %h1= article.title
+  %h2= article.title
   %p= I18n.l(article.published_at, format: :long)
-  %br
   %br
   %p.article-text
     = article.text
