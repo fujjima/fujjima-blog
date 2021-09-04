@@ -14,6 +14,48 @@ class Admin::ArticlesController < AdminController
 
   def edit; end
 
+  # やること
+  # 返却されたURLをフロントに返す
+  # TODO: google drive関連のクラスを作成し、そこに退避する
+  # ここでやるのはパラメータの受け渡しとフロントへの返却ぐらいにする
+  def upload_image
+    image_file = params[:image]
+
+    File.open(image_file.original_filename, "w+b") do |fp|
+      fp.write image_file.read
+    end
+
+    # google drive接続関連
+    # クラスか、モジュールか
+    # クラスの場合、initializeする際のパラメータは？
+
+    # 認証ファイルから必要な情報を取得する
+    loaded_credentials = File.open("#{Rails.root}/google-credentials.json") do |j|
+      JSON.load(j)
+    end
+
+    private_key = OpenSSL::PKey::RSA.new(loaded_credentials["private_key"])
+    # GCPの設定ファイルから値を取得してアクセストークン取得を行う
+    auth = Signet::OAuth2::Client.new(
+      token_credential_uri: loaded_credentials["token_uri"],
+      audience: loaded_credentials["token_uri"],
+      scope: %w(
+        https://www.googleapis.com/auth/drive
+      ),
+      issuer: loaded_credentials["client_email"],
+      signing_key: private_key
+    )
+    auth.fetch_access_token!
+
+    # google driveにログインした状態を保持する
+    session = GoogleDrive.login_with_oauth(auth.access_token)
+    folder = session.file_by_title(ENV["GOOGLE_DRIVE_IMAGE_FOLDER_NAME"])
+    file_path = "#{Rails.root}/#{image_file.original_filename}"
+    folder.upload_from_file(file_path, image_file.original_filename, convert: false)
+
+    File.delete(file_path) if File.exist?(file_path)
+  end
+
   def create
     # TODO: 新規作成時にタグが紐づけられていないので修正
     @article = Article.new(article_params)
