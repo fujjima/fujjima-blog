@@ -18,8 +18,7 @@ class Admin::ArticlesController < AdminController
   # TODO: 返却されたURLをフロントに返す
   # ここでやるのはパラメータの受け渡しとフロントへの返却ぐらいにする
   def upload_image
-    image_file = params[:image]
-    uploader = Uploader::GoogleDriveUploader.new(file: image_file)
+    uploader = Uploader::GoogleDriveUploader.new(file: image_params)
     uploader.upload!
   end
 
@@ -64,6 +63,10 @@ class Admin::ArticlesController < AdminController
   # TODO: 理想はtagsについても[]で受け取れるようにすること
   def article_params
     params.require(:article).permit(:title, :text, :published, :slug)
+  end
+
+  def image_params
+    params.require(:image)
   end
 
   def set_article

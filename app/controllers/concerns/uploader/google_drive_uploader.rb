@@ -1,16 +1,14 @@
 # ------------------------------------------------------------
 
 # google driveへの画像アップローダー
-
 # 引数：アップロードしたいファイル（受け取れる型：ActionDispatch::Http::UploadedFile）
+# TODO: jpg.jpegファイルのみ受け取るようにバリデーション的なメソッドが欲しい
 
 # ------------------------------------------------------------
 module Uploader
   class GoogleDriveUploader
     extend ActiveSupport::Concern
-    extend Memoist
 
-    # TODO: jpg.jpegファイルのみ受け取るようにバリデーション的なメソッドが欲しい
     def initialize file:
       @file = file
     end
@@ -26,8 +24,6 @@ module Uploader
 
       file_delete file_path
     end
-
-
 
     private
 
