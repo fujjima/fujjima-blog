@@ -10,7 +10,11 @@ Rails.application.routes.draw do
       get :activate, on: :member
     end
     resources :reset_passwords, only: %w[new create edit update]
-    resources :articles
+    resources :articles do
+      collection do
+        post :upload_image
+      end
+    end
     resources :tags, only: %w[index] do
       post :update, on: :collection
     end

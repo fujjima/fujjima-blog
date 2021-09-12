@@ -14,6 +14,14 @@ class Admin::ArticlesController < AdminController
 
   def edit; end
 
+  # やること
+  # TODO: 返却されたURLをフロントに返す
+  # ここでやるのはパラメータの受け渡しとフロントへの返却ぐらいにする
+  def upload_image
+    uploader = Uploader::GoogleDriveUploader.new(file: image_params)
+    uploader.upload!
+  end
+
   def create
     # TODO: 新規作成時にタグが紐づけられていないので修正
     @article = Article.new(article_params)
@@ -55,6 +63,10 @@ class Admin::ArticlesController < AdminController
   # TODO: 理想はtagsについても[]で受け取れるようにすること
   def article_params
     params.require(:article).permit(:title, :text, :published, :slug)
+  end
+
+  def image_params
+    params.require(:image)
   end
 
   def set_article
