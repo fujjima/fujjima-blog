@@ -13,7 +13,7 @@ module Uploader
       @file = file
     end
 
-    def upload!
+    def upload!(return_upload_file?: false)
       file_open
 
       auth = get_auth_fetched_access_token!
@@ -22,7 +22,11 @@ module Uploader
       file_path = "#{Rails.root}/#{@file.original_filename}"
       folder.upload_from_file(file_path, @file.original_filename, convert: false)
 
+      # uploaded_file.human_urlで取得できる
+      uploaded_file = session.file_by_title(@file.original_filename)
+
       file_delete file_path
+      return uploaded_file if return_upload_file?
     end
 
     private

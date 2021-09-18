@@ -15,11 +15,12 @@ class Admin::ArticlesController < AdminController
   def edit; end
 
   # やること
-  # TODO: 返却されたURLをフロントに返す
-  # ここでやるのはパラメータの受け渡しとフロントへの返却ぐらいにする
   def upload_image
     uploader = Uploader::GoogleDriveUploader.new(file: image_params)
-    uploader.upload!
+    upload_file = uploader.upload!(return_upload_file?: true)
+
+    # TODO: 返却されたURLをフロントに返す
+    
   end
 
   def create
