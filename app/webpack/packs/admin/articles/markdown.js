@@ -17,7 +17,8 @@ const preview = function (sel) {
 const setAxiosHeader = () => {
   axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
-    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+    'Content-Type': 'application/json'
   }
 }
 
@@ -41,8 +42,12 @@ $(function () {
     setAxiosHeader()
 
     axios.post(`${location.origin}/admin/articles/upload_image`, formData)
-      .then(() => {
-        console.log('success')
+      .then(response => {
+        // response.data内に、"https://drive.google.com/file/d/1JQYr8ruFUdmWNFsSw7zCgckOgGJP1C0G/view?usp=drivesdk"のようなデータが入っている
+        // data内のURL書き換え
+        // 該当部分に要素追加
+        debugger
+        console.log(response)
       })
   });
 });

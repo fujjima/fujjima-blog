@@ -13,7 +13,7 @@ module Uploader
       @file = file
     end
 
-    def upload!(return_upload_file?: false)
+    def upload!(return_upload_file: false)
       file_open
 
       auth = get_auth_fetched_access_token!
@@ -26,7 +26,7 @@ module Uploader
       uploaded_file = session.file_by_title(@file.original_filename)
 
       file_delete file_path
-      return uploaded_file if return_upload_file?
+      return uploaded_file if return_upload_file
     end
 
     private

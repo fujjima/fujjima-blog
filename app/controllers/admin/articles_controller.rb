@@ -14,13 +14,13 @@ class Admin::ArticlesController < AdminController
 
   def edit; end
 
-  # やること
   def upload_image
     uploader = Uploader::GoogleDriveUploader.new(file: image_params)
-    upload_file = uploader.upload!(return_upload_file?: true)
+    upload_file = uploader.upload!(return_upload_file: true)
 
-    # TODO: 返却されたURLをフロントに返す
-    
+    respond_to do |format|
+      format.json { render json: upload_file.human_url }
+    end
   end
 
   def create
