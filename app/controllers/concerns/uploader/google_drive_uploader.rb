@@ -47,7 +47,9 @@ module Uploader
     end
 
     def file_open
-      File.open(@file.original_filename, "w+b") do |fp|
+      file_name = @file.original_filename
+      file_path = Rails.root.join(file_name).to_s
+      File.open(file_path, "w+b") do |fp|
         fp.write @file.read
       end
     end
