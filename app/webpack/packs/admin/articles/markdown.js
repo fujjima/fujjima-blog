@@ -13,6 +13,9 @@ const preview = function (sel) {
   $('#markdown-preview').html(html);
 }
 
+// テキストエリア内の内容をプレビュー画面に反映する
+const updatePreview = () => preview($('#article-text'))
+
 // csrf対策通過用にaxiosにheaderを設定する
 const setAxiosHeader = () => {
   axios.defaults.headers.common = {
@@ -47,8 +50,7 @@ $(function () {
 
   $('#article-text').on(
     "keyup", function () {
-      let sel = $(this)
-      preview(sel)
+      updatePreview()
     }
   );
 
@@ -68,6 +70,7 @@ $(function () {
         const title = response.data.title
         const imageUrl = replacedImageUrl({ title: title, id: id })
         insertImageUrlIntoTextarea(imageUrl)
+        updatePreview()
       })
   });
 });
