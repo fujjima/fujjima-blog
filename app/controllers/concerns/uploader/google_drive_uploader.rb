@@ -22,7 +22,6 @@ module Uploader
       file_path = "#{Rails.root}/#{@file.original_filename}"
       folder.upload_from_file(file_path, @file.original_filename, convert: false)
 
-      # uploaded_file.human_urlで取得できる
       uploaded_file = session.file_by_title(@file.original_filename)
 
       file_delete file_path

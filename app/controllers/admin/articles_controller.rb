@@ -19,7 +19,7 @@ class Admin::ArticlesController < AdminController
     upload_file = uploader.upload!(return_upload_file: true)
 
     respond_to do |format|
-      format.json { render json: upload_file.human_url }
+      format.json { render json: { title: upload_file.title , id: upload_file.id } }
     end
   end
 

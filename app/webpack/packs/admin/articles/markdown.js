@@ -22,6 +22,25 @@ const setAxiosHeader = () => {
   }
 }
 
+const replacedImageUrl = ({ title = '', id = '' }) => {
+  return `![${title}](https://drive.google.com/uc?export=view&id=${id})`
+}
+
+// insertedText: 挿入したいテキスト
+const insertImageUrlIntoTextarea = (insertedText) => {
+  const textarea = document.getElementById('article-text')
+  let sentence = textarea.value
+  let len = sentence.length
+  let pos = textarea.selectionStart
+
+  let before = sentence.substr(0, pos)
+  let after = sentence.substr(pos, len)
+  sentence = before + insertedText + after
+
+  // MEMO: textarea内の文章の置き換え
+  textarea.value = sentence
+}
+
 $(function () {
   // 遷移、ロード時に実行させる
   preview($('#article-text'));
@@ -44,10 +63,11 @@ $(function () {
     axios.post(`${location.origin}/admin/articles/upload_image`, formData)
       .then(response => {
         // response.data内に、"https://drive.google.com/file/d/1JQYr8ruFUdmWNFsSw7zCgckOgGJP1C0G/view?usp=drivesdk"のようなデータが入っている
-        // data内のURL書き換え
-        // 該当部分に要素追加
-        debugger
-        console.log(response)
+        if (!response.data) returns
+        const id = response.data.id
+        const title = response.data.title
+        const imageUrl = replacedImageUrl({ title: title, id: id })
+        insertImageUrlIntoTextarea(imageUrl)
       })
   });
 });
