@@ -64,7 +64,6 @@ $(function () {
 
     axios.post(`${location.origin}/admin/articles/upload_image`, formData)
       .then(response => {
-        // response.data内に、"https://drive.google.com/file/d/1JQYr8ruFUdmWNFsSw7zCgckOgGJP1C0G/view?usp=drivesdk"のようなデータが入っている
         if (!response.data) returns
         const id = response.data.id
         const title = response.data.title
