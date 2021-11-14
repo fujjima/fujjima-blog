@@ -11,7 +11,7 @@ $(function () {
 
   $('.article-text').each(function (index, val) {
     var text = $(val).text();
-    var html = marked(text);
+    var html = marked.parse(text);
     $(val).html(html);
   })
 });
