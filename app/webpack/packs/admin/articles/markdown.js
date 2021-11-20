@@ -9,7 +9,7 @@ const preview = function (sel) {
       return hljs.highlightAuto(code, [lang]).value;
     }
   });
-  let html = marked(sel.val());
+  let html = marked.parse(sel.val());
   $('#markdown-preview').html(html);
 }
 
