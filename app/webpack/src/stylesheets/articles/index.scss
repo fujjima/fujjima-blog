@@ -15,3 +15,18 @@ pre {
   padding-bottom: 30px;
   border-bottom: dotted 2px gray;
 }
+
+.tag-area {
+  display: flex;
+  align-items: center;
+  color: gray;
+
+  // font-awesomeで描画される要素は最終的にsvgのため、svgに対して設定する
+  > svg {
+    margin-right: 10px;
+  };
+  > p {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+}

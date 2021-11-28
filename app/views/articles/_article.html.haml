@@ -3,6 +3,10 @@
 %div.blog-post
   %h2= article.title
   %p= I18n.l(article.published_at, format: :long)
+  - unless article.tags.empty?
+    %div.tag-area
+      %i.fas.fa-tags
+      %p= join_with_comma(article.tags.pluck(:name))
   %br
   %p.article-text
     = article.text

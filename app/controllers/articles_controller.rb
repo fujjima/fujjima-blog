@@ -2,7 +2,11 @@ class ArticlesController < GeneralController
   PER_PAGE = 7
 
   def index
-    @articles = paginate(Article.published.sort_by(&:published_at).reverse!)
+    @articles = paginate(Article.published
+                                .preload(:tags)
+                                .sort_by(&:published_at)
+                                .reverse!)
+
   end
 
   def archives
