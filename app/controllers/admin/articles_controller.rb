@@ -14,6 +14,9 @@ class Admin::ArticlesController < AdminController
 
   def edit; end
 
+  def sort
+  end
+
   def upload_image
     uploader = Uploader::GoogleDriveUploader.new(file: image_params)
     upload_file = uploader.upload!(return_upload_file: true)

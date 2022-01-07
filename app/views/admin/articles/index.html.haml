@@ -1,15 +1,16 @@
 = javascript_pack_tag 'admin/articles/index'
 = stylesheet_pack_tag 'admin/articles/index'
 
+-# ソートアイコンを出しておく
 %table.table
   %thead.thead-light
     %tr
-      %th{:scope => "col"} id
-      %th{:scope => "col"} title
-      %th{:scope => "col"} content
+      %th{scope: "col", class: 'sortable'} id
+      %th{scope: "col"} title
+      %th{scope: "col"} content
       -# statusはチェック状態にしておく
-      %th{:scope => "col"} status
-      %th{:scope => "col"} published_at
-      %th{:scope => "col"} edit
-      %th{:scope => "col"} delete
+      %th{scope: "col", class: 'sortable'} status
+      %th{scope: "col", class: 'sortable'} published_at
+      %th{scope: "col"} edit
+      %th{scope: "col"} delete
     = render partial: 'layouts/admin/articles/article', collection: @articles

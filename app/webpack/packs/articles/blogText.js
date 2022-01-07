@@ -1,4 +1,4 @@
-// 一般画面用markdownをhtml変換
+// markdownをhtmlに変換する
 // https://qiita.com/samuraibrass/items/d40d54aa0754692d5439
 $(function () {
   marked.setOptions({
