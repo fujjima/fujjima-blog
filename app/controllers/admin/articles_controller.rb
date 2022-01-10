@@ -1,5 +1,8 @@
 class Admin::ArticlesController < AdminController
   include Taggable
+
+  protect_from_forgery except: :sort
+
   before_action :set_article, only: %w[edit update destroy]
   before_action :tag_names, only: %w[new edit]
 
@@ -10,11 +13,19 @@ class Admin::ArticlesController < AdminController
   def index
     @articles = Article.includes(:tags)
                        .order(:id)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit; end
 
   def sort
+    respond_to do |format|
+      @articles = Article.order(sort_params)
+      format.js { render :index, layout: false }
+    end
   end
 
   def upload_image
@@ -71,6 +82,10 @@ class Admin::ArticlesController < AdminController
 
   def image_params
     params.require(:image)
+  end
+
+  def sort_params
+    params.require(:sort)
   end
 
   def set_article

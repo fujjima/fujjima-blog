@@ -64,7 +64,7 @@ $(function () {
 
     axios.post(`${location.origin}/admin/articles/upload_image`, formData)
       .then(response => {
-        if (!response.data) returns
+        if (!response.data) return;
         const id = response.data.id
         const title = response.data.title
         const imageUrl = replacedImageUrl({ title: title, id: id })

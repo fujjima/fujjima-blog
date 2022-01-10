@@ -10,21 +10,24 @@ const axios = require('axios');
 //   }
 // }
 
-
 $(function () {
+  // ajaxでのリクエストを再現するため、jsを指定する
+  // .js.erbでの置換を考える
+  axios.defaults.headers.common = {
+    'Content-Type': 'application/javascript'
+  };
+
   // 帰ってきた内容でコンテンツ部分を書き換える
   $('.thead-light th.sortable').on('click', (e) => {
-    // TODO: クリックしたheader要素をソート対象とする
     const sortTarget = e.target.textContent
     if (!sortTarget) return;
 
     // TODO: axiosでsortのgetリクエストを飛ばす
+    // 再描画はjs.erb側で行う
     axios.get(`${location.href}/sort`, {
       params: {
         sort: sortTarget
       }
-    }).then(response => {
-      console.log(response);
-    });
+    })
   })
 });
