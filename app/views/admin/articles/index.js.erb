@@ -1,3 +1,1 @@
-<%# TODO: <table class="table" >内をpartialで置き換える %>
-$('tbody').css({'background-color': 'orange'});
-$('table.table').html("<%= j(render partial: 'layouts/admin/articles/article', collection: @articles) %>");
+$('tbody').html("<%= j(render partial: 'layouts/admin/articles/article', collection: @articles) %>")

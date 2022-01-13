@@ -13,4 +13,5 @@
       %th{scope: "col", class: 'sortable'} published_at
       %th{scope: "col"} edit
       %th{scope: "col"} delete
+  %tbody
     = render partial: 'layouts/admin/articles/article', collection: @articles

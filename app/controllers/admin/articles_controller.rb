@@ -24,7 +24,7 @@ class Admin::ArticlesController < AdminController
   def sort
     respond_to do |format|
       @articles = Article.order(sort_params)
-      format.js { render :index, layout: false }
+      format.js { render :index }
     end
   end
 
