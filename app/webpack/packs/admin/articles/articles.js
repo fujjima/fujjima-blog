@@ -4,7 +4,6 @@ const fullPathWithOutQuery = () => {
 
 $(function () {
   // NOTE: 画面読み込み時にクエリを消去する
-  // TODO: 画面リロード時にソートされているのであれば、ソートしてしまえばいいのでは
   history.replaceState({}, '', fullPathWithOutQuery());
 
   // TODO: ロードされた段階で、クエリストリングを読んでソート対象のヘッダーに対してアイコンを追加する
