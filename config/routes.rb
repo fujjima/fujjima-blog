@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     resources :reset_passwords, only: %w[new create edit update]
     resources :articles do
       collection do
-        get :sort
         post :upload_image
       end
     end

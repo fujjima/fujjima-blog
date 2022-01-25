@@ -11,8 +11,14 @@ class Admin::ArticlesController < AdminController
   end
 
   def index
-    @articles = Article.includes(:tags)
-                       .order(:id)
+    @articles = if params[:sort_by] && params[:order]
+                  # ref) https://stackoverflow.com/questions/25487098/order-an-activerecord-relation-object
+                  Article.includes(:tags)
+                         .order("#{sort_params[:sort_by]}": sort_params[:order])
+                else
+                  Article.includes(:tags).order(:id)
+                end
+
     respond_to do |format|
       format.html
       format.js
@@ -20,13 +26,6 @@ class Admin::ArticlesController < AdminController
   end
 
   def edit; end
-
-  def sort
-    respond_to do |format|
-      @articles = Article.order(sort_params)
-      format.js { render :index }
-    end
-  end
 
   def upload_image
     uploader = Uploader::GoogleDriveUploader.new(file: image_params)
@@ -85,7 +84,7 @@ class Admin::ArticlesController < AdminController
   end
 
   def sort_params
-    params.require(:sort)
+    params.permit(:sort_by, :order)
   end
 
   def set_article
