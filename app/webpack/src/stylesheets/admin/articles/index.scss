@@ -1,6 +1,13 @@
 // 記事全体のスタイル
 table.table {
   width: 100%;
+  th {
+    cursor: pointer;
+    // hover時にはアイコンを軽く出す
+    &:hover {
+      background: #ecf2fa;;
+    }
+  }
   td.id {
     width: 5%;
   }

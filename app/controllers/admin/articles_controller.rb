@@ -1,5 +1,8 @@
 class Admin::ArticlesController < AdminController
   include Taggable
+
+  protect_from_forgery except: :sort
+
   before_action :set_article, only: %w[edit update destroy]
   before_action :tag_names, only: %w[new edit]
 
@@ -8,8 +11,18 @@ class Admin::ArticlesController < AdminController
   end
 
   def index
-    @articles = Article.includes(:tags)
-                       .order(:id)
+    @articles = if params[:sort_by] && params[:order]
+                  # ref) https://stackoverflow.com/questions/25487098/order-an-activerecord-relation-object
+                  Article.includes(:tags)
+                         .order("#{sort_params[:sort_by]}": sort_params[:order])
+                else
+                  Article.includes(:tags).order(:id)
+                end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit; end
@@ -68,6 +81,10 @@ class Admin::ArticlesController < AdminController
 
   def image_params
     params.require(:image)
+  end
+
+  def sort_params
+    params.permit(:sort_by, :order)
   end
 
   def set_article
