@@ -13,8 +13,11 @@
     "bootstrap": "^4.6.0",
     "fibers": "^5.0.1",
     "jquery": "^3.6.0",
-    "sass": "^1.49.7",
+    "sass": "^1.49.0",
     "turbolinks": "^5.2.0"
+  },
+  "resolutions": {
+    "node-sass": "https://registry.npmjs.org/dart-sass/-/dart-sass-1.25.0.tgz"
   },
   "version": "0.1.0",
   "devDependencies": {
