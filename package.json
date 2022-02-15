@@ -8,18 +8,18 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
     "@yaireo/tagify": "^3.23.1",
-    "admin-lte": "^3.1.0-rc",
+    "admin-lte": "git+https://github.com/fujjima/AdminLTE.git#master",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "fibers": "^5.0.1",
     "jquery": "^3.6.0",
-    "sass": "^1.49.0",
+    "sass": "^1.49.7",
     "turbolinks": "^5.2.0"
   },
+  "version": "0.1.0",
   "resolutions": {
     "node-sass": "https://registry.npmjs.org/dart-sass/-/dart-sass-1.25.0.tgz"
   },
-  "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^3.11.2"
   }
