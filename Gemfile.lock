@@ -390,7 +390,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma (~> 4.1)
-  rails (~> 6.0.3, >= 6.0.3.4)
+  rails (>= 6.0.3.4)
   rails-i18n
   rspec-rails
   sass-rails (>= 6)
@@ -404,7 +404,7 @@ DEPENDENCIES
   webpacker (~> 4.0)
 
 RUBY VERSION
-   ruby 2.7.2p137
+   ruby 2.7.5p203
 
 BUNDLED WITH
    2.1.4
