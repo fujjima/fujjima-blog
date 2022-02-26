@@ -3,24 +3,24 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.2",
-    "@rails/actioncable": "^6.0.0",
-    "@rails/activestorage": "^6.0.0",
-    "@rails/ujs": "^6.0.0",
+    "@rails/actioncable": "6.1.4",
+    "@rails/activestorage": "6.1.4",
+    "@rails/ujs": "6.1.4",
     "@rails/webpacker": "4.3.0",
-    "@yaireo/tagify": "^3.23.1",
+    "@yaireo/tagify": "3.25.0",
     "admin-lte": "git+https://github.com/fujjima/AdminLTE.git#master",
-    "axios": "^0.21.1",
-    "bootstrap": "^4.6.0",
-    "fibers": "^5.0.1",
-    "jquery": "^3.6.0",
+    "axios": "0.21.4",
+    "bootstrap": "4.6.1",
+    "fibers": "5.0.1",
+    "jquery": "3.6.0",
     "sass": "1.49.8",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "5.2.0"
   },
   "version": "0.1.0",
   "resolutions": {
     "node-sass": "https://registry.npmjs.org/dart-sass/-/dart-sass-1.25.0.tgz"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "3.11.3"
   }
 }

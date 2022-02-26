@@ -27,7 +27,7 @@ jobs:
           - 5432:5432
     strategy:
       matrix:
-        ruby-version: ['2.7.2']
+        ruby-version: ['2.7.5']
 
     steps:
     - name: Checkout repository
