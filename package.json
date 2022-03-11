@@ -21,6 +21,6 @@
     "node-sass": "https://registry.npmjs.org/dart-sass/-/dart-sass-1.25.0.tgz"
   },
   "devDependencies": {
-    "webpack-dev-server": "3.11.3"
+    "webpack-dev-server": "4.7.4"
   }
 }
