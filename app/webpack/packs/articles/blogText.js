@@ -9,9 +9,12 @@ $(function () {
     }
   });
 
-  $('.article-text').each(function (index, val) {
+  $('.article-text').each(function (_, val) {
     var text = $(val).text();
     var html = marked.parse(text);
     $(val).html(html);
+    // ref) app/webpack/src/stylesheets/articles/index.scss
+    //  .article-text
+    $(val).css('visibility', 'visible');
   })
 });

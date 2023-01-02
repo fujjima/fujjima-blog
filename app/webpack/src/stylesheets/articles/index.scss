@@ -30,3 +30,8 @@ pre {
     margin: 0;
   }
 }
+
+// NOTE: コンテンツの変換が完了するまで本文は非表示にしておく
+.article-text {
+  visibility: hidden;
+}
