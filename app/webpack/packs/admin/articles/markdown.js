@@ -14,7 +14,7 @@ const preview = function (sel) {
 }
 
 // テキストエリア内の内容をプレビュー画面に反映する
-const updatePreview = () => preview($('#article-text'))
+const updatePreview = () => preview($('#admin-article-text'))
 
 // csrf対策通過用にaxiosにheaderを設定する
 const setAxiosHeader = () => {
@@ -31,7 +31,7 @@ const replacedImageUrl = ({ title = '', id = '' }) => {
 
 // insertedText: 挿入したいテキスト
 const insertImageUrlIntoTextarea = (insertedText) => {
-  const textarea = document.getElementById('article-text')
+  const textarea = document.getElementById('admin-article-text')
   let sentence = textarea.value
   let len = sentence.length
   let pos = textarea.selectionStart
@@ -46,16 +46,16 @@ const insertImageUrlIntoTextarea = (insertedText) => {
 
 $(function () {
   // 遷移、ロード時に実行させる
-  preview($('#article-text'));
+  preview($('#admin-article-text'));
 
-  $('#article-text').on(
+  $('#admin-article-text').on(
     "keyup", function () {
       updatePreview()
     }
   );
 
   // ファイル（画像のみ）を検知、バックにaxios等でリクエストを送信する
-  $('#article-text').on("drop", function (e) {
+  $('#admin-article-text').on("drop", function (e) {
     e.preventDefault()
     f = e.originalEvent.dataTransfer.files[0];
     let formData = new FormData();
