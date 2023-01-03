@@ -34,4 +34,10 @@ pre {
 // NOTE: コンテンツの変換が完了するまで本文は非表示にしておく
 .article-text {
   visibility: hidden;
+
+  // NOTE: 記事一覧画面での各記事の最大表示行数は5行とする
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
 }
