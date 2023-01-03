@@ -36,8 +36,9 @@ pre {
   visibility: hidden;
 
   // NOTE: 記事一覧画面での各記事の最大表示行数は5行とする
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
-  overflow: hidden;
+  // TODO: 先に記事詳細画面と記事詳細用のURLの発行を行ってから下記のスタイルを適用する
+  // display: -webkit-box;
+  // -webkit-box-orient: vertical;
+  // -webkit-line-clamp: 5;
+  // overflow: hidden;
 }
