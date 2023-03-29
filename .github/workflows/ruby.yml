@@ -38,14 +38,6 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-
-    - name: Cache node modules
-      uses: actions/cache@v2
-      with:
-        path: node_modules
-        key: ${{ runner.OS }}-yarn-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.OS }}-yarn-
     
     - name: Cache bundle gems
       uses: actions/cache@v2
@@ -57,12 +49,12 @@ jobs:
           ${{ runner.os }}-gem-
           ${{ runner.os }}-
 
-    - name: Install Node.js and Yarn
-      run: |
-        sudo curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-        sudo echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-        sudo curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
-        sudo apt update && sudo apt install -y nodejs yarn
+    - name: Setup Node.js and Yarn
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          cache: npm
+          yarn: true
 
     - name: Install dependencies
       run: |
