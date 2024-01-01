@@ -6,9 +6,6 @@
     = f.label :title
     = f.text_field :title, class: 'form-control'
   .form-group
-    = f.label :slug
-    = f.text_field :slug, class: 'form-control'
-  .form-group
     = f.label :published
     = f.select :published, [['publish', true], ['draft', false]], {}, class: 'form-control'
   -# TODO: タグのリストが表示されないので調査する
