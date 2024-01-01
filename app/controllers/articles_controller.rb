@@ -9,6 +9,10 @@ class ArticlesController < GeneralController
 
   end
 
+  def show
+    @article = Article.published.find_by(slug: params[:slug])
+  end
+
   def archives
     @articles = if params[:year] && params[:month]
                   paginate(Article.published
@@ -29,9 +33,6 @@ class ArticlesController < GeneralController
     @articles = paginate(Article.tagged_by(params['tag_name']))
     render :index
   end
-
-  # TODO: 外部サイト作ったら消す
-  def career;  end
 
   # TODO: 外部サイト作ったら消す
   def question; end
