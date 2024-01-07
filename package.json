@@ -20,9 +20,10 @@
     "node-sass": "https://registry.npmjs.org/dart-sass/-/dart-sass-1.25.0.tgz"
   },
   "devDependencies": {
+    "@webpack-cli/serve": "^2.0.5",
     "webpack-dev-server": "4.7.4"
   },
   "engines": {
-    "node": "16.x"
+    "node": "18.x"
   }
 }
