@@ -14,8 +14,8 @@ ENV BUNDLE_DEPLOYMENT="1" \
     RAILS_ENV="production"
 
 # Update gems and bundler
-RUN gem update --system --no-document && \
-    gem install -N bundler
+RUN gem update --system 2.7.8 --no-document && \
+    gem install -N bundler -v 2.1.4
 
 
 # Throw-away build stage to reduce size of final image
@@ -26,7 +26,7 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential curl libpq-dev libvips node-gyp pkg-config python-is-python3
 
 # Install JavaScript dependencies
-ARG NODE_VERSION=18.x
+ARG NODE_VERSION=18.18.0
 ARG YARN_VERSION=1.22.19
 ENV PATH=/usr/local/node/bin:$PATH
 RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
