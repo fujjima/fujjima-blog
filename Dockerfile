@@ -46,7 +46,7 @@ RUN curl https://get.volta.sh | bash
 ENV VOLTA_HOME /root/.volta
 ENV PATH $VOLTA_HOME/bin:/usr/local/bin:$PATH
 RUN volta install node@${NODE_VERSION} yarn@${YARN_VERSION} && \
-    gem update --system 2.7.5 --no-document && \
+    gem update --system 2.7.8 --no-document && \
     gem install -N bundler -v ${BUNDLER_VERSION}
 
 #######################################################################
