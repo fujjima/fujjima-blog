@@ -13,13 +13,10 @@ ENV BUNDLE_DEPLOYMENT="1" \
     BUNDLE_WITHOUT="development:test" \
     RAILS_ENV="production"
 
-# Update gems and bundler
-RUN gem update --system 2.7.8 --no-document && \
-    gem install -N bundler -v 2.1.4
-
-
-# Throw-away build stage to reduce size of final image
-FROM base as build
+RUN curl https://get.volta.sh | bash
+ENV VOLTA_HOME /root/.volta
+ENV PATH $VOLTA_HOME/bin:/usr/local/bin:$PATH
+RUN volta install node@${NODE_VERSION} yarn@${YARN_VERSION}
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
