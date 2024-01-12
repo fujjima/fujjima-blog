@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/fujjima/fujjima-blog/graph/badge.svg?token=S410TENQXD)](https://codecov.io/gh/fujjima/fujjima-blog)
+
 # README
 
 This README would normally document whatever steps are necessary to get the
