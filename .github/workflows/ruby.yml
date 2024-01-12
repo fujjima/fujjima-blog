@@ -58,7 +58,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        gem install bundler
+        gem install bundler -v 2.1.4
         bundle install --jobs 4 --retry 3
 
     - name: Install library for postgres
