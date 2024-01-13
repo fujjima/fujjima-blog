@@ -39,3 +39,6 @@ google-credentials.json
 
 # dump data
 /dump
+
+# coverage report made by simplecov
+/coverage/
