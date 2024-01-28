@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.8'
+ruby '3.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 6.0.3.4'
@@ -25,6 +25,8 @@ gem 'google_drive'
 gem 'haml-rails'
 gem 'kaminari'
 gem 'memoist'
+# rails7へアップデートしたらpsychのバージョン指定は不要になるはずなので消す
+gem 'psych', '< 4'
 gem 'rails-i18n'
 gem 'sorcery'
 
