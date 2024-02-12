@@ -21,15 +21,16 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'articles#index'
-  get '/career', to: 'articles#career'
+
   get '/question', to: 'articles#question'
 
-  get '/archives/:year', to: 'articles#archives', constraints: { year: /\d{4}/ }
+  # TODO: 2024/2のようなルーティングではなく、クエリパラメータで分岐させるか、archivesというリソースを作る
+  get '/archives/:year', to: 'articles#archives', constraints: { year: /\d{4}/ }, as: 'archives_by_year'
 
   get '/archives/:year/:month', to: 'articles#archives', constraints: {
     year: /\d{4}/,
     month: /\d{1,2}/
-  }
+  }, as: 'archives_by_month'
 
   # タグの詳細画面はなく、記事のタグによる絞り込み機能のみがある
   get '/tags/:tag_name', to: 'articles#tags'

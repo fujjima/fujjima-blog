@@ -6,7 +6,6 @@ class ArticlesController < GeneralController
                                 .preload(:tags)
                                 .sort_by(&:published_at)
                                 .reverse!)
-
   end
 
   def archives
@@ -29,9 +28,6 @@ class ArticlesController < GeneralController
     @articles = paginate(Article.tagged_by(params['tag_name']))
     render :index
   end
-
-  # TODO: 外部サイト作ったら消す
-  def career;  end
 
   # TODO: 外部サイト作ったら消す
   def question; end
