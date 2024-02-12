@@ -4,12 +4,11 @@ FactoryBot.define do
     text { 'this is test article' }
     slug { 'published_article' }
     published { true }
+    published_at { Time.now }
   end
 
-  factory :not_published_article, class: Article do
-    title { 'test_article' }
-    text { 'this is test article' }
-    slug { 'not_published_article' }
+  trait :draft do
+    text { 'not published article' }
     published { false }
   end
 end

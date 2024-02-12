@@ -14,7 +14,7 @@ RSpec.describe Article, type: :model do
     end
 
     it 'publishedがfalseからtrueに変更された場合、published_atが更新される' do
-      not_published_article = build(:not_published_article)
+      not_published_article = build(:article, :draft)
       not_published_article.published = true
       not_published_article.save
       expect(not_published_article.published_at.nil?).to eq(false)
