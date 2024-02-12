@@ -11,4 +11,14 @@ FactoryBot.define do
     text { 'not published article' }
     published { false }
   end
+
+  trait :with_tags do
+    transient do
+      tag_name { 'テストタグ' }
+    end
+
+    after(:create) do |article, evaluator|
+      article.tags << create(:tag, name: evaluator.tag_name)
+    end
+  end
 end

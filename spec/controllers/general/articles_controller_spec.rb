@@ -53,6 +53,18 @@ RSpec.describe ArticlesController, type: :request do
     end
   end
 
-  xdescribe '#tag' do
+  describe '#tag' do
+    context 'with tags' do
+      let!(:article){ create :article }
+      let!(:article_with_tag){ create(:article, :with_tags, text: 'タグ付きの記事') }
+
+      it '選択されたタグに紐づく記事のみ表示されること' do
+        get article_tags_path(tag_name: article_with_tag.tags.first.name)
+
+        expect(response).to have_http_status 200
+        expect(response.body).to include(article_with_tag.text)
+        expect(response.body).not_to include(article.text)
+      end
+    end
   end
 end

@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   }, as: 'archives_by_month'
 
   # タグの詳細画面はなく、記事のタグによる絞り込み機能のみがある
-  get '/tags/:tag_name', to: 'articles#tags'
+  get '/tags/:tag_name', to: 'articles#tags', as: 'article_tags'
 
   # タグに関する画面はタグ一覧画面のみ
   resources :tags, only: %w[index]
