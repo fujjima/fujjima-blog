@@ -80,6 +80,7 @@ jobs:
       with:
         directory: ./coverage/reports/
         env_vars: OS,PYTHON
+        token: ${{ secrets.CODECOV_TOKEN }}
         fail_ci_if_error: true
         files: ./coverage/coverage.xml
         flags: unittests
