@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_05_031920) do
-
+ActiveRecord::Schema[7.1].define(version: 2024_05_11_185307) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,7 +19,7 @@ ActiveRecord::Schema.define(version: 2024_02_05_031920) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", precision: 6, null: false
+    t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -33,7 +32,7 @@ ActiveRecord::Schema.define(version: 2024_02_05_031920) do
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
-    t.datetime "created_at", precision: 6, null: false
+    t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -46,8 +45,8 @@ ActiveRecord::Schema.define(version: 2024_02_05_031920) do
   create_table "article_tags", force: :cascade do |t|
     t.integer "article_id"
     t.integer "tag_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["article_id", "tag_id"], name: "index_article_tags_on_article_id_and_tag_id", unique: true
     t.index ["article_id"], name: "index_article_tags_on_article_id"
     t.index ["tag_id"], name: "index_article_tags_on_tag_id"
@@ -59,15 +58,15 @@ ActiveRecord::Schema.define(version: 2024_02_05_031920) do
     t.boolean "published", default: false, null: false
     t.string "slug", null: false
     t.text "image"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.datetime "published_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "published_at", precision: nil
   end
 
   create_table "tags", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
@@ -75,15 +74,15 @@ ActiveRecord::Schema.define(version: 2024_02_05_031920) do
     t.string "email", null: false
     t.string "crypted_password"
     t.string "salt"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "role", default: 0, null: false
     t.string "activation_state"
     t.string "activation_token"
-    t.datetime "activation_token_expires_at"
+    t.datetime "activation_token_expires_at", precision: nil
     t.string "reset_password_token"
-    t.datetime "reset_password_token_expires_at"
-    t.datetime "reset_password_email_sent_at"
+    t.datetime "reset_password_token_expires_at", precision: nil
+    t.datetime "reset_password_email_sent_at", precision: nil
     t.integer "access_count_to_reset_password_page", default: 0
     t.index ["activation_token"], name: "index_users_on_activation_token"
     t.index ["email"], name: "index_users_on_email", unique: true
