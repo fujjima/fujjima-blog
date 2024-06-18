@@ -21,6 +21,8 @@
   },
   "devDependencies": {
     "@webpack-cli/serve": "^2.0.5",
+    "vite": "^5.0.0",
+    "vite-plugin-ruby": "^5.0.0",
     "webpack-dev-server": "4.7.4"
   },
   "engines": {
