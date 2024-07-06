@@ -1,4 +1,6 @@
-module.exports = function(api) {
+// https://qiita.com/Nao2022/items/0a5ab7facb52b70c2337
+
+module.exports = function (api) {
   var validEnv = ['development', 'test', 'production']
   var currentEnv = api.env()
   var isDevelopmentEnv = api.env('development')
@@ -8,10 +10,10 @@ module.exports = function(api) {
   if (!validEnv.includes(currentEnv)) {
     throw new Error(
       'Please specify a valid `NODE_ENV` or ' +
-        '`BABEL_ENV` environment variables. Valid values are "development", ' +
-        '"test", and "production". Instead, received: ' +
-        JSON.stringify(currentEnv) +
-        '.'
+      '`BABEL_ENV` environment variables. Valid values are "development", ' +
+      '"test", and "production". Instead, received: ' +
+      JSON.stringify(currentEnv) +
+      '.'
     )
   }
 
@@ -54,11 +56,21 @@ module.exports = function(api) {
         }
       ],
       [
+        '@babel/plugin-transform-private-methods',
+        {
+          loose: true
+        }
+      ],
+      [
+        '@babel/plugin-transform-private-property-in-object',
+        {
+          loose: true
+        }
+      ],
+      [
         '@babel/plugin-transform-runtime',
         {
-          helpers: false,
-          regenerator: true,
-          corejs: false
+          helpers: false
         }
       ],
       [

@@ -8,7 +8,7 @@ gem 'rails', '7.1.3.2'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
-gem 'webpacker', '~> 4.0'
+gem 'webpacker', '~> 5.0'
 # gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
@@ -29,6 +29,7 @@ gem 'memoist'
 gem 'psych', '< 4'
 gem 'rails-i18n'
 gem 'sorcery'
+gem 'vite_rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
