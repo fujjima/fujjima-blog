@@ -40,7 +40,7 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     
     - name: Cache bundle gems
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
