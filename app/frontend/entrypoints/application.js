@@ -37,6 +37,7 @@ import '@fortawesome/fontawesome-free/js/all'
 import 'bootstrap'
 import 'admin-lte'
 import $ from 'jquery';
+import '@/stylesheets/application.scss';
 
 window.$ = $;
 

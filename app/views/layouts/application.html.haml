@@ -9,7 +9,8 @@
     -# NOTE: Hot Module Reload 用タグ
     = vite_client_tag
 
-    = vite_stylesheet_tag 'stylesheets/application.scss'
+    -# TODO: vite_stylesheet_tag のみ使えないので原因調査したい
+    -# = vite_stylesheet_tag 'stylesheets/application.scss'
     = vite_javascript_tag 'application'
 
     = analytics_init if Rails.env.production?
