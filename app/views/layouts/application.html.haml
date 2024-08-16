@@ -5,8 +5,13 @@
     %title FujjimaBlog
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_pack_tag 'application', media: 'all'
-    = javascript_pack_tag 'application'
+
+    -# NOTE: Hot Module Reload 用タグ
+    = vite_client_tag
+
+    = vite_stylesheet_tag 'stylesheets/application.scss'
+    = vite_javascript_tag 'application'
+
     = analytics_init if Rails.env.production?
   = render 'layouts/header'
   %body
