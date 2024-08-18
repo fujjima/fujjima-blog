@@ -5,8 +5,11 @@
     %title FujjimaBlog
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_pack_tag 'admin', media: 'all'
-    = javascript_pack_tag 'admin'
+
+    -# NOTE: Hot Module Reload 用タグ
+    = vite_client_tag
+    = vite_javascript_tag 'admin_application'
+
   -# TODO: admin, loginで共通のテンプレートファイルを使用したい
   %body.hold-transition.sidebar-mini
     .wrapper
