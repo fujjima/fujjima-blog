@@ -1,5 +1,5 @@
-import Tagify from '@yaireo/tagify'
-import '@yaireo/tagify/dist/tagify.css'
+import Tagify from '@yaireo/tagify';
+import '@yaireo/tagify/dist/tagify.css';
 
 import '@/stylesheets/admin/tags/tags.scss';
 
