@@ -1,7 +1,7 @@
 import Tagify from '@yaireo/tagify'
 import '@yaireo/tagify/dist/tagify.css'
 
-import 'src/stylesheets/admin/tags/tags.scss';
+import '@/stylesheets/admin/tags/tags.scss';
 
 $(function () {
   let input = document.querySelector('textarea[name=tags]')
