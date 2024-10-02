@@ -11,7 +11,7 @@ pre {
   margin-bottom: 60px;
 }
 
-.blog-post:not(:last-child){
+.blog-post:not(:last-child) {
   padding-bottom: 30px;
   border-bottom: dotted 2px gray;
 }
@@ -22,10 +22,13 @@ pre {
   color: gray;
 
   // font-awesomeで描画される要素は最終的にsvgのため、svgに対して設定する
-  > svg {
+  >svg {
     margin-right: 10px;
-  };
-  > p {
+  }
+
+  ;
+
+  >p {
     font-size: 0.9rem;
     margin: 0;
   }

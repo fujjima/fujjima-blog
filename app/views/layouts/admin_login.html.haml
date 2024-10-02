@@ -5,8 +5,7 @@
     %title FujjimaBlog
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_pack_tag 'admin', media: 'all'
-    = javascript_pack_tag 'admin'
+    = vite_pack_tag 'admin_application'
   %body
     -# メッセージがある場合、メッセージ内容も表示
     - flash.each do |key, value|

@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 
 // マークダウンをプレビュー画面に表示する
 const preview = function (sel) {
