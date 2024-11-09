@@ -72,6 +72,8 @@ jobs:
         POSTGRES_PASSWORD: postgres
 
     - name: Run Rspec
+      env:
+        TZ: "Asia/Tokyo"
       run: bundle exec rspec
     
     - name: Upload coverage reports

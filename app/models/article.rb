@@ -9,10 +9,10 @@ class Article < ApplicationRecord
   scope :group_by_monthly, -> { group_by { |article| article.published_at&.strftime('%Y/%m') } }
   scope :group_by_yearly, -> { group_by { |article| article.published_at&.strftime('%Y') } }
   scope :get_by_month, -> (year, month) {
-    where('EXTRACT(YEAR FROM published_at) = :year AND EXTRACT(MONTH FROM published_at) = :month', year: year, month: month)
+    where(published_at: Time.new(year, month).in_time_zone.all_month)
   }
   scope :get_by_year, -> (year) {
-    where('EXTRACT(YEAR FROM published_at) = :year', year: year)
+    where(published_at: Time.new(year).in_time_zone.all_year)
   }
   scope :tagged_by, -> (tag_name){ joins(:tags).where(tags: {name: tag_name}) }
 
