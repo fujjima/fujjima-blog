@@ -23,3 +23,8 @@ ja:
       previous: "&lsaquo;"
       next: "&rsaquo;"
       truncate: "..."
+
+  helpers:
+      submit:
+        create: 登録する
+        update: 更新する
