@@ -13,6 +13,17 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+# ref) https://zenn.dev/m_yamashii/articles/0058e37ff47e28
+require 'simplecov'
+SimpleCov.start
+
+require 'simplecov-cobertura'
+SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
+
+require 'vite_ruby'
+ViteRuby.commands.build
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

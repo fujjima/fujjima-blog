@@ -1,0 +1,47 @@
+// --------------------------------------------------
+// 対象：_article.html.haml
+pre {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: solid 2px gray;
+  padding-left: 10px;
+}
+
+.blog-post {
+  margin-bottom: 60px;
+}
+
+.blog-post:not(:last-child) {
+  padding-bottom: 30px;
+  border-bottom: dotted 2px gray;
+}
+
+.tag-area {
+  display: flex;
+  align-items: center;
+  color: gray;
+
+  // font-awesomeで描画される要素は最終的にsvgのため、svgに対して設定する
+  >svg {
+    margin-right: 10px;
+  }
+
+  ;
+
+  >p {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+}
+
+// NOTE: コンテンツの変換が完了するまで本文は非表示にしておく
+.article-text {
+  visibility: hidden;
+
+  // NOTE: 記事一覧画面での各記事の最大表示行数は5行とする
+  // TODO: 先に記事詳細画面と記事詳細用のURLの発行を行ってから下記のスタイルを適用する
+  // display: -webkit-box;
+  // -webkit-box-orient: vertical;
+  // -webkit-line-clamp: 5;
+  // overflow: hidden;
+}

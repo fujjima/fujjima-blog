@@ -1,5 +1,4 @@
-= javascript_pack_tag 'admin/tags/tag_form'
-= stylesheet_pack_tag 'admin/tags/tag_form'
+= vite_javascript_tag 'admin_tag_form'
 
 = form_with model: [:admin, article], local: true do |f|
   .form-group
@@ -19,5 +18,4 @@
         = f.text_area :text, id: 'admin-article-text', class: 'form-control', size: '30x30'
       .col-md-6.border
         #markdown-preview
-  -# TODO: i18nでなんとかしたい
-  = f.submit "更新する", class: 'btn btn-primary'
+  = f.submit nil, class: 'btn btn-primary'

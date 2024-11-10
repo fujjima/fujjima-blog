@@ -6,7 +6,6 @@ class ArticlesController < GeneralController
                                 .preload(:tags)
                                 .sort_by(&:published_at)
                                 .reverse!)
-
   end
 
   def show

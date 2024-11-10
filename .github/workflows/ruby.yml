@@ -27,7 +27,7 @@ jobs:
           - 5432:5432
     strategy:
       matrix:
-        ruby-version: ['2.7.5']
+        ruby-version: ['3.3.0']
 
     steps:
     - name: Checkout repository
@@ -50,15 +50,14 @@ jobs:
           ${{ runner.os }}-
 
     - name: Setup Node.js and Yarn
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16.x'
-          cache: npm
-          yarn: true
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.13.x'
+        cache: npm
 
     - name: Install dependencies
       run: |
-        gem install bundler
+        gem install bundler -v 2.5.3
         bundle install --jobs 4 --retry 3
 
     - name: Install library for postgres
@@ -73,4 +72,18 @@ jobs:
         POSTGRES_PASSWORD: postgres
 
     - name: Run Rspec
+      env:
+        TZ: "Asia/Tokyo"
       run: bundle exec rspec
+    
+    - name: Upload coverage reports
+      uses: codecov/codecov-action@v3
+      with:
+        directory: ./coverage/reports/
+        env_vars: OS,PYTHON
+        token: ${{ secrets.CODECOV_TOKEN }}
+        fail_ci_if_error: true
+        files: ./coverage/coverage.xml
+        flags: unittests
+        name: ruby-for-codecov
+        verbose: true

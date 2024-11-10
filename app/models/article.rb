@@ -1,6 +1,4 @@
 class Article < ApplicationRecord
-  attr_accessor :skip_update_published_at
-
   has_many :article_tags, dependent: :destroy
   has_many :tags, through: :article_tags
 
@@ -10,8 +8,12 @@ class Article < ApplicationRecord
   scope :published, -> { where(published: true) }
   scope :group_by_monthly, -> { group_by { |article| article.published_at&.strftime('%Y/%m') } }
   scope :group_by_yearly, -> { group_by { |article| article.published_at&.strftime('%Y') } }
-  scope :get_by_month, -> (year, month){ group_by { |article| article.published_at&.strftime('%Y/%m') }["#{year}/#{month}"] }
-  scope :get_by_year, -> (year){ group_by { |article| article.published_at&.strftime('%Y') }[year] }
+  scope :get_by_month, -> (year, month) {
+    where(published_at: Time.new(year, month).in_time_zone.all_month)
+  }
+  scope :get_by_year, -> (year) {
+    where(published_at: Time.new(year).in_time_zone.all_year)
+  }
   scope :tagged_by, -> (tag_name){ joins(:tags).where(tags: {name: tag_name}) }
 
   # scope :group_by_year_and_month, -> { group_by { |article| [article.published_at.strftime('%Y'), article.published_at.strftime('%Y-%m')] } }
@@ -23,8 +25,7 @@ class Article < ApplicationRecord
   private
 
   def update_published_at
-    return if skip_update_published_at
-    return if published_was
+    return if published_in_database
 
     assign_attributes(published_at: Time.now)
   end
