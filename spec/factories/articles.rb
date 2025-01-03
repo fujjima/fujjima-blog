@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :article do
     title { 'test_article' }
     text { 'this is test article' }
-    slug { 'published_article' }
+    slug { SecureRandom.hex(Article::SLUG_HEX_SIZE) }
     published { true }
     published_at { Time.now }
   end
