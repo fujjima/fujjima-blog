@@ -10,9 +10,10 @@ RSpec.describe Article, type: :model do
       expect(article.valid?).to eq(true)
     end
 
-    it 'slugが空欄でも許容する' do
+    it 'slugが空欄の時はバリデーションエラー' do
       article.slug = ''
-      expect(article.valid?).to be true
+      expect(article.valid?).to be false
+      expect(article.errors.full_messages).to include("スラグは#{Article::SLUG_BYTE_SIZE}文字で入力してください")
     end
   end
 

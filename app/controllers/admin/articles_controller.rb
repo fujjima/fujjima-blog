@@ -38,7 +38,8 @@ class Admin::ArticlesController < AdminController
 
   def create
     # TODO: 新規作成時にタグが紐づけられていないので修正
-    @article = Article.new(article_params)
+    slug = SecureRandom.hex(Article::SLUG_HEX_SIZE)
+    @article = Article.new(article_params.merge(slug: slug))
     if @article.save
       redirect_to admin_articles_path, notice: "successed to create"
     else

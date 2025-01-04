@@ -8,6 +8,10 @@ class ArticlesController < GeneralController
                                 .reverse!)
   end
 
+  def show
+    @article = Article.published.find_by(slug: params[:slug])
+  end
+
   def archives
     @articles = if params[:year] && params[:month]
                   paginate(Article.published

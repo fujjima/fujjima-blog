@@ -1,7 +1,7 @@
 -# TODO
 -# 一記事の表示限界を定める
 %div.blog-post
-  %h2= article.title
+  %h2= link_to article.title, article_path(slug: article.slug)
   %p= I18n.l(article.published_at, format: :long)
   - unless article.tags.empty?
     %div.tag-area

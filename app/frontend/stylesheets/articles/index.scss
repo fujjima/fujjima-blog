@@ -9,6 +9,10 @@ pre {
 
 .blog-post {
   margin-bottom: 60px;
+
+  > h2 > a{
+    text-decoration: none;
+  }
 }
 
 .blog-post:not(:last-child) {
@@ -25,8 +29,6 @@ pre {
   >svg {
     margin-right: 10px;
   }
-
-  ;
 
   >p {
     font-size: 0.9rem;
