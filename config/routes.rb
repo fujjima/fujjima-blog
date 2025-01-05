@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'articles#index'
-  get '/:slug', to: 'articles#show', as: :article
   get '/question', to: 'articles#question'
+  get '/:slug', to: 'articles#show', as: :article
 
   # TODO: 2024/2のようなルーティングではなく、クエリパラメータで分岐させるか、archivesというリソースを作る
   get '/archives/:year', to: 'articles#archives', constraints: { year: /\d{4}/ }, as: 'archives_by_year'
