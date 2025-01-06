@@ -5,6 +5,10 @@
     %title FujjimaBlog
     = csrf_meta_tags
     = csp_meta_tag
+    -# = display_meta_tags(default_meta_tags)
+
+    -# ref) https://www.reddit.com/r/reactjs/comments/109cb1d/favicon_in_reactappvite/
+    %link{ rel: "icon", type: "image/png", href: "/favicon.ico" }
 
     -# NOTE: Hot Module Reload 用タグ
     = vite_client_tag
