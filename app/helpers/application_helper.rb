@@ -1,7 +1,8 @@
 module ApplicationHelper
   # rubocop:disable Metrics/MethodLength
   def default_meta_tags
-    image_url = vite_asset_path('images/icon_800x800.png')
+    # image_url = vite_asset_path('images/icon_800x800.png')
+    image_url = vite_asset_url('images/icon_800x800.png')
     twitter_account = Rails.env.production? ? ENV['TWITTER_ACCOUNT'] : Rails.application.credentials.twitter_account
 
     {
@@ -23,7 +24,7 @@ module ApplicationHelper
         description: :description,
         type: 'website',
         url: request.original_url,
-        # image:,# 配置するパスやファイル名によって変更する
+        image: image_url,
         local: 'ja-JP'
       },
       twitter: {
