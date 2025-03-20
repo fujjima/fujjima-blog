@@ -32,33 +32,41 @@ class Admin::ArticlesController < AdminController
     upload_file = uploader.upload!(return_upload_file: true)
 
     respond_to do |format|
-      format.json { render json: { title: upload_file.title , id: upload_file.id } }
+      format.json { render json: { title: upload_file.title, id: upload_file.id } }
     end
   end
 
   def create
-    # TODO: 新規作成時にタグが紐づけられていないので修正
     slug = SecureRandom.hex(Article::SLUG_HEX_SIZE)
-    @article = Article.new(article_params.merge(slug: slug))
+    @article = Article.new(article_params.merge(slug:))
+
+    # TODO: できればタグ付け処理を他に移管したい
+    tag_names = tag_names_to_ary(params[:tags])
+    @article.tags = tag_names.map do |tag_name|
+      find_or_create_tags_by_name(tag_name)
+    end
+
     if @article.save
-      redirect_to admin_articles_path, notice: "successed to create"
+      redirect_to admin_articles_path, notice: 'successed to create'
     else
-      flash.now[:alert] = "failed to create"
+      flash.now[:alert] = 'failed to create'
       render :edit
     end
   end
 
   def update
     ActiveRecord::Base.transaction do
-      tag_names_ary = tag_names_to_ary(params[:tags])
-      Tag.insert_new_tag(tag_names_ary)
-      @article.tags.replace(from_tag_names_ary_to_tag_instances_ary(tag_names_ary))
+      # TODO: できればタグ付け処理を他に移管したい
+      tag_names = tag_names_to_ary(params[:tags])
+      @article.tags = tag_names.map do |tag_name|
+        find_or_create_tags_by_name(tag_name)
+      end
 
       @article.assign_attributes(article_params)
       if @article.save
-        redirect_to admin_articles_path, notice: "successed to update"
+        redirect_to admin_articles_path, notice: 'successed to update'
       else
-        flash.now[:alert] = "failed to update"
+        flash.now[:alert] = 'failed to update'
         render :edit
       end
     end
@@ -66,9 +74,9 @@ class Admin::ArticlesController < AdminController
 
   def destroy
     if @article.destroy
-      redirect_to admin_articles_path, notice: "successed to delete"
+      redirect_to admin_articles_path, notice: 'successed to delete'
     else
-      flash.now[:alert] = "failed to delete"
+      flash.now[:alert] = 'failed to delete'
       render :index
     end
   end
@@ -78,6 +86,14 @@ class Admin::ArticlesController < AdminController
   # TODO: 理想はtagsについても[]で受け取れるようにすること
   def article_params
     params.require(:article).permit(:title, :text, :published, :slug)
+  end
+
+  def find_or_create_and_assign_tags(article)
+    tag_names = tag_names_to_ary(params[:tags])
+    article.tags = tag_names.map do |tag_name|
+      Tag.find_or_create_by(name: tag_name)
+    end
+    article
   end
 
   def image_params
