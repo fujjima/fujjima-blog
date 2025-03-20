@@ -8,15 +8,15 @@ module Taggable
   end
 
   def load_tags
-      all_tags = Tag.all.to_a
-      # その他タグを配列の最後尾に並び直す
-      all_tags.partition{ |tag| tag.name != 'その他' }.flatten
+    all_tags = Tag.all.to_a
+    # その他タグを配列の最後尾に並び直す
+    all_tags.partition { |tag| tag.name != 'その他' }.flatten
   end
   memoize :load_tags
 
   # params内のタグ名は","区切りの文字列
   def tag_names_to_ary(str)
-    str.empty? ? [] : str.split(',')
+    str.present? ? str.split(',') : []
   end
 
   def find_or_create_tags_by_name(tag_name)
