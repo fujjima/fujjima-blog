@@ -11,6 +11,7 @@ class Tag < ApplicationRecord
 
     # tagsにはタグ名の配列を渡す
     # ex) [tag1, tag2]
+    # TODO: そもそも、あまりパフォーマンス考慮しないので insert_allは避けたい
     def insert_new_tag(tags)
       return if tags.empty?
 

@@ -19,7 +19,7 @@ module Taggable
     str.empty? ? [] : str.split(',')
   end
 
-  def from_tag_names_ary_to_tag_instances_ary(tag_names_array)
-    Tag.where(name: tag_names_array)
+  def find_or_create_tags_by_name(tag_name)
+    Tag.find_or_create_by(name: tag_name)
   end
 end
