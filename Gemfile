@@ -24,7 +24,6 @@ gem 'google_drive'
 gem 'haml-rails'
 gem 'kaminari'
 gem 'memoist'
-gem 'meta-tags'
 # rails7へアップデートしたらpsychのバージョン指定は不要になるはずなので消す
 gem 'psych', '< 4'
 gem 'rails-i18n'
