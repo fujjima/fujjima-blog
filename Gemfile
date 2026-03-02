@@ -19,7 +19,6 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'carrierwave'
 gem 'font-awesome-rails'
-gem 'google-analytics-rails'
 gem 'google_drive'
 gem 'haml-rails'
 gem 'kaminari'
