@@ -1,6 +1,15 @@
 !!!
 %html
   %head
+    %script{ async: true, src: "https://www.googletagmanager.com/gtag/js?id=G-WYDMS02B2H" }
+
+    :javascript
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-WYDMS02B2H');
+
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title FujjimaBlog
     = csrf_meta_tags
@@ -17,7 +26,6 @@
     = vite_javascript_tag 'application'
     = display_meta_tags(default_meta_tags)
 
-    = analytics_init if Rails.env.production?
   = render 'layouts/header'
   %body
     .wrapper

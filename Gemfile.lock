@@ -150,7 +150,6 @@ GEM
       railties (>= 3.2, < 9.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    google-analytics-rails (1.1.1)
     google-apis-core (0.11.3)
       addressable (~> 2.5, >= 2.5.1)
       googleauth (>= 0.16.2, < 2.a)
@@ -472,7 +471,6 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   font-awesome-rails
-  google-analytics-rails
   google_drive
   haml-rails
   jbuilder (~> 2.7)
