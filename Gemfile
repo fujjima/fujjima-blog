@@ -24,11 +24,13 @@ gem 'haml-rails'
 gem 'kaminari'
 gem 'memoist'
 gem 'meta-tags'
-# rails7へアップデートしたらpsychのバージョン指定は不要になるはずなので消す
+# TODO: rails7へアップデートしたらpsychのバージョン指定は不要になるはずなので消す
 gem 'psych', '< 4'
 gem 'rails-i18n'
 gem 'sorcery'
 gem 'vite_rails'
+gem 'omniauth-google-oauth2'
+gem 'tailwindcss-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
