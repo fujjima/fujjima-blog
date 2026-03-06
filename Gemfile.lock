@@ -296,6 +296,9 @@ GEM
     omniauth-oauth2 (1.9.0)
       oauth2 (>= 2.0.2, < 3)
       omniauth (~> 2.0)
+    omniauth-rails_csrf_protection (2.0.1)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
     os (1.1.4)
     pg (1.5.9)
     pry (0.14.2)
@@ -507,6 +510,7 @@ DEPENDENCIES
   memoist
   meta-tags
   omniauth-google-oauth2
+  omniauth-rails_csrf_protection
   pg (>= 0.18, < 2.0)
   pry-byebug
   pry-rails

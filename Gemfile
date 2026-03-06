@@ -30,6 +30,7 @@ gem 'rails-i18n'
 gem 'sorcery'
 gem 'vite_rails'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 gem 'tailwindcss-rails'
 
 group :development, :test do
