@@ -21,3 +21,7 @@
           = link_to 'I forgot my password', new_admin_reset_password_path
           %br
           = link_to 'Register a new membership', admin_register_path
+
+          %hr.my-3
+          = link_to 'Googleでログイン', admin_auth_at_provider_path(provider: :google),
+              class: 'block w-full py-2 px-4 border border-gray-300 rounded bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors text-center'
