@@ -1,9 +1,16 @@
+# NOTE: 全体設定
+Metrics/MethodLength:
+ Max: 15
+ClassAndModuleChildren:
+  EnforcedStyle: compact
 Style/Documentation:
   Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: false
 Style/AsciiComments:
   Enabled: false
+
+# NOTE: 個別設定
 Metrics/BlockLength:
   Exclude:
     - "spec/**/*"
