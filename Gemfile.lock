@@ -145,7 +145,12 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     faraday-retry (1.0.3)
-    ffi (1.16.3)
+    ffi (1.17.3-aarch64-linux-gnu)
+    ffi (1.17.3-arm-linux-gnu)
+    ffi (1.17.3-arm64-darwin)
+    ffi (1.17.3-x86-linux-gnu)
+    ffi (1.17.3-x86_64-darwin)
+    ffi (1.17.3-x86_64-linux-gnu)
     font-awesome-rails (4.7.0.9)
       railties (>= 3.2, < 9.0)
     globalid (1.2.1)
@@ -221,9 +226,11 @@ GEM
       letter_opener (~> 1.7)
       railties (>= 5.2)
       rexml
-    listen (3.9.0)
+    listen (3.10.0)
+      logger
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    logger (1.7.0)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -341,7 +348,7 @@ GEM
       zeitwerk (~> 2.6)
     rake (13.2.1)
     rb-fsevent (0.11.2)
-    rb-inotify (0.10.1)
+    rb-inotify (0.11.1)
       ffi (~> 1.0)
     rdoc (6.3.4.1)
     regexp_parser (2.9.1)
@@ -409,10 +416,10 @@ GEM
       bcrypt (~> 3.1)
       oauth (>= 0.6)
       oauth2 (~> 2.0)
-    spring (2.1.1)
-    spring-watcher-listen (2.0.1)
+    spring (4.4.2)
+    spring-watcher-listen (2.1.0)
       listen (>= 2.7, < 4.0)
-      spring (>= 1.2, < 3.0)
+      spring (>= 4)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -494,7 +501,7 @@ DEPENDENCIES
   simplecov-cobertura
   sorcery
   spring
-  spring-watcher-listen (~> 2.0.0)
+  spring-watcher-listen (~> 2.1.0)
   tzinfo-data
   vite_rails
   web-console (>= 3.3.0)
