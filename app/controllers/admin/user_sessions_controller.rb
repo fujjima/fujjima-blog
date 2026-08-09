@@ -1,5 +1,5 @@
 class Admin::UserSessionsController < AdminController
-  skip_before_action :require_login
+  skip_before_action :require_login, :require_admin
   layout 'admin_login'
 
   def new; end
@@ -25,20 +25,26 @@ class Admin::UserSessionsController < AdminController
     provider = auth_params[:provider]
 
     # NOTE: login_fromの仕様について(https://github.com/Sorcery/sorcery?tab=readme-ov-file#external)
+    #       既に外部認証が紐付いているユーザーは、そのままログインさせる
     if (@user = login_from(provider))
-      redirect_to admin_dashboards_path, notice: "#{provider.titleize}アカウントでログインしました"
-    else
-      begin
-        @user = create_from(provider)
-
-        # NOTE: protect from session fixation attack
-        reset_session
-        auto_login(@user)
-        redirect_to admin_dashboards_path, notice: "#{provider.titleize}アカウントを追加し、ログインしました。"
-      rescue StandardError
-        redirect_to root_path, alert: "#{provider.titleize}アカウントでのログインに失敗しました"
-      end
+      return redirect_to admin_dashboards_path, notice: "#{provider.titleize}アカウントでログインしました"
     end
+
+    # NOTE: 外部認証経由でのユーザー新規作成は行わない。
+    #       sorceryのcreate_fromはバリデーションを行わずにユーザーを保存するため、
+    #       任意のアカウントで管理画面に入れるユーザーが作られてしまう
+    if (@user = linkable_user).blank?
+      return redirect_to admin_login_path, alert: "#{provider.titleize}アカウントでのログインは許可されていません"
+    end
+
+    @user.add_provider_to_user(provider.to_s, external_uid)
+
+    # NOTE: protect from session fixation attack
+    reset_session
+    auto_login(@user)
+    redirect_to admin_dashboards_path, notice: "#{provider.titleize}アカウントを紐付け、ログインしました"
+  rescue StandardError
+    redirect_to admin_login_path, alert: '外部認証でのログインに失敗しました'
   end
 
   def destroy
@@ -50,5 +56,26 @@ class Admin::UserSessionsController < AdminController
 
   def auth_params
     params.permit(:code, :provider)
+  end
+
+  # NOTE: 外部認証から取得したユーザー情報。login_fromなどの実行時にsorceryが@user_hashへ格納する
+  def external_user_info
+    @user_hash&.dig(:user_info) || {}
+  end
+
+  def external_uid
+    @user_hash&.dig(:uid).to_s
+  end
+
+  # NOTE: 外部認証のメールアドレスと一致する既存ユーザーを返す（該当がなければnil）。
+  #       未検証のメールアドレスは第三者がなりすませるため、検証済みのもののみ受け付ける
+  #       (verified_emailはGoogleのoauth2/v1/userinfoが返すキー)
+  def linkable_user
+    return if external_user_info['verified_email'] != true
+
+    email = external_user_info['email']
+    return if email.blank?
+
+    User.find_by(email: email)
   end
 end
