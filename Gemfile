@@ -6,7 +6,7 @@ ruby '3.3.11'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '7.1.3.4'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 6.4'
 gem 'sass-rails', '>= 6'
 # gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -24,7 +24,7 @@ gem 'haml-rails'
 gem 'kaminari'
 gem 'memoist'
 gem 'meta-tags'
-# rails7へアップデートしたらpsychのバージョン指定は不要になるはずなので消す
+# TODO: rails7へアップデートしたらpsychのバージョン指定は不要になるはずなので消す
 gem 'psych', '< 4'
 gem 'rails-i18n'
 gem 'sorcery'
@@ -36,7 +36,6 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
-  gem 'dotenv-rails'
 end
 
 group :development do

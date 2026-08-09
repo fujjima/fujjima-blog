@@ -1,6 +1,6 @@
 class Admin::UsersController < AdminController
   # edit, updateの時は必要かも（adminログイン後、admin情報を変更したい時など）
-  skip_before_action :require_login
+  # skip_before_action :require_login, :require_admin
   layout 'admin_login'
 
   def new
