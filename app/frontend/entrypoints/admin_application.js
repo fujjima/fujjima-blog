@@ -40,6 +40,7 @@ import '@fortawesome/fontawesome-free/js/all'
 import 'bootstrap'
 import 'admin-lte'
 import '@/stylesheets/admin/admin.scss'
+import 'tailwindcss/utilities';
 
 Rails.start()
 ActiveStorage.start()
