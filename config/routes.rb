@@ -11,17 +11,7 @@ Rails.application.routes.draw do
     get  'auth/failure',            to: redirect('/admin/login')
     get  'auth/:provider',          to: 'user_sessions#oauth', as: :auth_at_provider
 
-    # ユーザー登録
-    get  '/register', to: 'users#new'
-    post '/register', to: 'users#create'
-
     get '/dashboards', to: 'dashboards#index'
-
-    resources :users do
-      get :activate, on: :member
-    end
-
-    resources :reset_passwords, only: %i[new create edit update]
 
     resources :articles do
       collection do

@@ -5,8 +5,6 @@ class User < ApplicationRecord
   validates :password, confirmation: true, length: { minimum: 6 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
-  # NOTE: userは一人しかいない想定だが、今後ユーザーを増やす可能性は0ではないため一応uniqueness付けとく
-  validates :reset_password_token, presence: true, uniqueness: true, allow_nil: true
   validate :check_if_user_only, on: :create
 
   has_many :authentications, dependent: :destroy

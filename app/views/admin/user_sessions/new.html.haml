@@ -17,10 +17,6 @@
               = f.label :password
               = f.password_field :password, class: 'form-control'
             = f.submit "Login", class: 'btn btn-primary'
-          %br
-          = link_to 'I forgot my password', new_admin_reset_password_path
-          %br
-          = link_to 'Register a new membership', admin_register_path
 
           %hr.my-3
           = link_to 'Googleでログイン', admin_auth_at_provider_path(provider: :google),
