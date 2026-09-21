@@ -14,5 +14,8 @@ db/*.sqlite3-*
 storage
 config/master.key
 config/credentials/*.key
+google-credentials.json
+.env*
+*.local
 
 node_modules
