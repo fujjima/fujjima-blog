@@ -13,11 +13,7 @@ Rails.application.routes.draw do
 
     get '/dashboards', to: 'dashboards#index'
 
-    resources :articles do
-      collection do
-        post :upload_image
-      end
-    end
+    resources :articles
 
     resources :tags, only: %i[index] do
       post :update, on: :collection
