@@ -1,4 +1,10 @@
 #markdown-preview {
   height: 100%;
   overflow-wrap: anywhere;
+
+  // プレビュー表示上だけ枠内に収める（アップロードする画像自体は縮小しない）
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }

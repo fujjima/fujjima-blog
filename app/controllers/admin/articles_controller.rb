@@ -27,15 +27,6 @@ class Admin::ArticlesController < AdminController
 
   def edit; end
 
-  def upload_image
-    uploader = Uploader::GoogleDriveUploader.new(file: image_params)
-    upload_file = uploader.upload!(return_upload_file: true)
-
-    respond_to do |format|
-      format.json { render json: { title: upload_file.title, id: upload_file.id } }
-    end
-  end
-
   def create
     slug = SecureRandom.hex(Article::SLUG_HEX_SIZE)
     @article = Article.new(article_params.merge(slug:))
@@ -46,7 +37,7 @@ class Admin::ArticlesController < AdminController
       find_or_create_tags_by_name(tag_name)
     end
 
-    if @article.save
+    if save_with_images
       redirect_to admin_articles_path, notice: 'successed to create'
     else
       flash.now[:alert] = 'failed to create'
@@ -63,7 +54,7 @@ class Admin::ArticlesController < AdminController
       end
 
       @article.assign_attributes(article_params)
-      if @article.save
+      if save_with_images
         redirect_to admin_articles_path, notice: 'successed to update'
       else
         flash.now[:alert] = 'failed to update'
@@ -96,8 +87,27 @@ class Admin::ArticlesController < AdminController
     article
   end
 
+  # フォーム送信時に本文と一緒に届く画像ファイル（{ "<uuid>" => UploadedFile }）
+  # キーは JS が発行した UUID、値はファイル本体。それ以外のものは無視する
   def image_params
-    params.require(:image)
+    images = params[:article_images]
+    return {} unless images.respond_to?(:to_unsafe_h)
+
+    images.to_unsafe_h.select do |token, file|
+      token.to_s.match?(/\A#{ArticleImageAttacher::UUID_PATTERN.source}\z/i) && file.respond_to?(:tempfile)
+    end
+  end
+
+  # バリデーション通過後に本文中の画像を R2 へアップロードし、公開 URL に置換してから保存する
+  # 先に valid? を通すことで、保存に失敗する記事のために画像だけ R2 に残ることを防ぐ
+  def save_with_images
+    return false unless @article.valid?
+
+    @article.text = ArticleImageAttacher.new(text: @article.text, images: image_params).call
+    @article.save
+  rescue ArticleImageAttacher::Error, Uploader::R2Uploader::ValidationError => e
+    @article.errors.add(:text, e.message)
+    false
   end
 
   def sort_params

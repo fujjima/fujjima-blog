@@ -1,6 +1,12 @@
 = vite_javascript_tag 'admin_tag_form'
 
-= form_with model: [:admin, article], local: true do |f|
+-# multipart: 本文中の画像（article_images[<uuid>]）を保存時に一緒に送るため
+= form_with model: [:admin, article], local: true, multipart: true, id: 'admin-article-form' do |f|
+  - if article.errors.any?
+    .alert.alert-danger
+      %ul.mb-0
+        - article.errors.full_messages.each do |message|
+          %li= message
   .form-group
     = f.label :title
     = f.text_field :title, class: 'form-control'
