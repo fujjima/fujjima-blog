@@ -1,5 +1,5 @@
--# TODO
--# 一記事の表示限界を定める
+-# excerpt: true の場合は本文を抜粋して表示する（記事一覧用）
+- excerpt = ArticleExcerpt.new(article.text) if local_assigns[:excerpt]
 %div.blog-post
   %h2= link_to article.title, article_path(slug: article.slug)
   %p= I18n.l(article.published_at, format: :long)
@@ -9,4 +9,7 @@
       %p= join_with_comma(article.tags.pluck(:name))
   %br
   %p.article-text
-    = article.text
+    = excerpt ? excerpt.text : article.text
+  - if excerpt&.truncated?
+    %p.read-more
+      = link_to '続きを読む →', article_path(slug: article.slug)
