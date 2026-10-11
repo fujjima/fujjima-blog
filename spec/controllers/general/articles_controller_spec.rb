@@ -14,6 +14,30 @@ RSpec.describe ArticlesController, type: :request do
         expect(response.body).not_to include(draft_article.text)
       end
     end
+
+    context 'with long article' do
+      let(:paragraphs) { Array.new(5) { |i| "#{i + 1}段落目#{'あ' * 60}。" } }
+      let!(:article) { create :article, text: paragraphs.join("\n\n") }
+
+      it '抜粋のみ表示し、詳細画面へのリンクを表示すること' do
+        get root_path
+
+        expect(response.body).to include(paragraphs[3])
+        expect(response.body).not_to include(paragraphs[4])
+        expect(response.body).to include('続きを読む')
+        expect(response.body).to include(article_path(slug: article.slug))
+      end
+    end
+
+    context 'with short article' do
+      let!(:article) { create :article }
+
+      it '詳細画面へのリンクを表示しないこと' do
+        get root_path
+
+        expect(response.body).not_to include('続きを読む')
+      end
+    end
   end
 
   describe '#show' do

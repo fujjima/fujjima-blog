@@ -47,3 +47,13 @@ pre {
   // -webkit-line-clamp: 5;
   // overflow: hidden;
 }
+
+// 記事一覧画面で抜粋表示した記事の詳細リンク
+.read-more {
+  text-align: right;
+
+  // 記事タイトルと同じく Bootstrap 既定のリンク色とし、下線のみ消す
+  > a {
+    text-decoration: none;
+  }
+}

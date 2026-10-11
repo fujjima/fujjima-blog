@@ -8,7 +8,7 @@
 = vite_javascript_tag 'index'
 
 %div
-  = render partial: 'article', collection: @articles
+  = render partial: 'article', collection: @articles, locals: { excerpt: true }
 
 = paginate @articles
 
