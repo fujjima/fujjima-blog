@@ -32,9 +32,9 @@
 import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 import '@fortawesome/fontawesome-free/js/all'
-import 'bootstrap'
 import $ from 'jquery';
 import '@/stylesheets/application.scss';
+import '@/components/themeToggle.js';
 
 window.$ = $;
 

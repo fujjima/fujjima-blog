@@ -1,0 +1,9 @@
+%header.page-header
+  %h1 タグ
+
+%ul.terms-tags
+  - @tags.each do |tag|
+    %li
+      = link_to article_tags_path(tag_name: tag.name) do
+        = tag.name
+        %sup= @article_counts[tag.id]

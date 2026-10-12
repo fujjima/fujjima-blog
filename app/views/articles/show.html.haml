@@ -6,7 +6,4 @@
 - set_meta_tags(title: "#{@article.title}", description: "#{extract_text_for_meta_tags(@article.text)}")
 = vite_javascript_tag 'index'
 
-%div
-  = render partial: 'article', locals: { article: @article }
-
-%footer.container
+= render partial: 'article', locals: { article: @article }
