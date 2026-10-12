@@ -113,5 +113,17 @@ RSpec.describe ArticlesController, type: :request do
         expect(response.body).not_to include(article.text)
       end
     end
+
+    context 'with multiple tagged articles' do
+      let!(:tag) { create(:tag, name: '並び順タグ') }
+      let!(:old_article) { create(:article, text: '古い記事', published_at: 2.days.ago, tags: [tag]) }
+      let!(:new_article) { create(:article, text: '新しい記事', published_at: 1.day.ago, tags: [tag]) }
+
+      it '公開日時の新しい順に表示されること' do
+        get article_tags_path(tag_name: tag.name)
+
+        expect(response.body.index('新しい記事')).to be < response.body.index('古い記事')
+      end
+    end
   end
 end
