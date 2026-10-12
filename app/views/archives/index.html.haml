@@ -1,0 +1,18 @@
+%header.page-header
+  %h1 アーカイブ
+
+- @archives.each do |year, months|
+  %section.archive-year
+    %h2.archive-year__title
+      = link_to year, archives_by_year_path(year: year)
+      %sup.archive-count= months.values.sum(&:size)
+    - months.each do |month, articles|
+      .archive-month
+        %h3.archive-month__title
+          = link_to "#{month}月", archives_by_month_path(year: year, month: month)
+          %sup.archive-count= articles.size
+        .archive-posts
+          - articles.each do |article|
+            .archive-entry
+              = link_to article.title, article_path(slug: article.slug), class: 'archive-entry__title'
+              %span.archive-meta= I18n.l(article.published_at.to_date, format: :long)

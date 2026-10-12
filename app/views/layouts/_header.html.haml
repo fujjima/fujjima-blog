@@ -1,13 +1,16 @@
--# TODO: navigator
-%header#header
-  %div.container
-    = link_to 'fujjima blog', root_path, class: 'blog-title'
-    %nav
-      %ul
-        %li
-          %a{ href: "https://fujjima.github.io/resume/", target: "_blank", rel: "noopener noreferrer" }
-            経歴
-        %li
-          -# TODO: 外部のサイトにアクセスさせる
-          %a{ href: "#{root_url}question" }
-            問い合わせ
+%header.header
+  %nav.nav
+    .logo
+      = link_to 'fujjima blog', root_path, class: 'blog-title'
+      %button.theme-toggle{ type: 'button', title: 'テーマ切り替え', 'aria-label': 'テーマ切り替え' }
+        %i.fas.fa-moon.theme-toggle__moon
+        %i.fas.fa-sun.theme-toggle__sun
+    %ul.menu
+      %li= link_to 'アーカイブ', archives_path
+      %li= link_to 'タグ', tags_path
+      %li
+        %a{ href: "https://fujjima.github.io/resume/", target: "_blank", rel: "noopener noreferrer" }
+          経歴
+      %li
+        -# TODO: 外部のサイトにアクセスさせる
+        = link_to '問い合わせ', question_path

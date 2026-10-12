@@ -1,6 +1,18 @@
 !!!
-%html
+%html{ lang: 'ja' }
   %head
+    -# NOTE: 描画前にテーマを確定させ、ライト→ダークのちらつきを防ぐ
+    :javascript
+      (function () {
+        try {
+          var theme = localStorage.getItem('theme');
+          if (theme !== 'light' && theme !== 'dark') {
+            theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+
     %script{ async: true, src: "https://www.googletagmanager.com/gtag/js?id=G-WYDMS02B2H" }
 
     :javascript
@@ -11,6 +23,7 @@
       gtag('config', 'G-WYDMS02B2H');
 
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1' }/
     %title FujjimaBlog
     = csrf_meta_tags
     = csp_meta_tag
@@ -26,13 +39,8 @@
     = vite_javascript_tag 'application'
     = display_meta_tags(default_meta_tags)
 
-  = render 'layouts/header'
   %body
-    .wrapper
-      .content-wrapper
-        %main.container
-          %div.row
-            %div.col-md-8.blog-main
-              = yield
-            %aside.col-md-4.blog-sidebar
-              = render 'layouts/sidebar'
+    = render 'layouts/header'
+    %main.main
+      = yield
+    = render 'layouts/footer'

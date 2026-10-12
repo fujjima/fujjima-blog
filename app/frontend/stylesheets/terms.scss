@@ -1,0 +1,107 @@
+// アーカイブ画面（app/views/archives）
+.archive-year {
+  margin-top: 40px;
+
+  &:not(:last-of-type) {
+    border-bottom: 2px solid var(--border);
+  }
+}
+
+.archive-year__title {
+  margin: 0 0 12px;
+  font-size: 32px;
+}
+
+.archive-month {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px 0;
+}
+
+.archive-month__title {
+  flex-shrink: 0;
+  width: 200px;
+  margin: 15px 0;
+  font-size: 22px;
+}
+
+.archive-count {
+  top: -0.75em;
+  margin-inline-start: 4px;
+  font-size: 12px;
+  font-weight: normal;
+  color: var(--secondary);
+}
+
+.archive-posts {
+  width: 100%;
+}
+
+.archive-entry {
+  position: relative;
+  margin: 10px 0;
+  padding: 5px;
+  transition: transform 0.1s;
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.archive-entry__title {
+  display: block;
+  font-size: 18px;
+  color: var(--primary);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.archive-meta {
+  font-size: 14px;
+  color: var(--secondary);
+}
+
+@media screen and (max-width: 768px) {
+  .archive-month {
+    flex-direction: column;
+  }
+
+  .archive-month__title {
+    width: auto;
+    margin: 0;
+  }
+}
+
+// タグ一覧画面（app/views/tags）
+.terms-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+
+  a {
+    display: block;
+    padding: 3px 10px;
+    font-size: 16px;
+    background: var(--tertiary);
+    border-radius: 6px;
+    transition: transform 0.1s;
+
+    &:active {
+      transform: scale(0.96);
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  sup {
+    margin-inline-start: 2px;
+    font-size: 12px;
+    color: var(--secondary);
+  }
+}

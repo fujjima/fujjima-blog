@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   root to: 'articles#index'
   get '/question', to: 'articles#question'
-  get '/:slug', to: 'articles#show', as: :article
+  get '/archives', to: 'archives#index', as: :archives
 
   # TODO: クエリパラメータ方式か archives リソースへの変更を検討
   archive_constraints = { year: /\d{4}/, month: /\d{1,2}/ }.freeze
@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   # タグによる記事絞り込み（タグ詳細画面はなし）
   get '/tags/:tag_name', to: 'articles#tags', as: 'article_tags'
   resources :tags, only: %i[index]
+
+  get '/:slug', to: 'articles#show', as: :article
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end

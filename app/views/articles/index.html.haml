@@ -7,10 +7,7 @@
 -# = vite_stylesheet_tag 'stylesheets/articles/index.scss'
 = vite_javascript_tag 'index'
 
-%div
+.post-list
   = render partial: 'article', collection: @articles, locals: { excerpt: true }
 
 = paginate @articles
-
--# TODO: 著作権とか（全体に適用したいのでapplicationに移植する）
-%footer.container

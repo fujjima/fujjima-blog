@@ -1,43 +1,80 @@
-#header {
-  width: 100%;
-  background-color: lightgray;
+.header {
+  background: var(--theme);
 }
 
-#header .container {
-  overflow: hidden;
-  height: 80px;
-  // タイトル、novの文字列を縦中央に配置
-  line-height: 80px;
-  margin: 0 auto;
-  width: 100%;
-}
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: calc(var(--nav-width) + var(--gap) * 2);
+  margin: auto;
+  line-height: var(--header-height);
 
-.blog-title {
-  float: left;
-  font-size: 2rem;
-  font-weight: 500;
-  text-decoration: none !important;
-  color: #000000;
-  &:hover{
-    color: #000000;
+  a {
+    display: block;
   }
 }
 
-#header nav > ul {
-  float: right;
-  list-style: none;
+.logo {
+  display: flex;
+  align-items: center;
+  flex-wrap: inherit;
+  margin-inline-start: var(--gap);
+  margin-inline-end: var(--gap);
+}
 
-  li{
-    float: left;
-    margin-right: 50px;
-    &:last-child{
-      margin-right: 0;
-    }
-    > a{
-      font-size: 1.1rem;
-      font-weight: 400;
-      text-decoration: none !important;
-      color: #000000;
-    }
+.blog-title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  height: 26px;
+  margin-inline-start: 12px;
+  font-size: 18px;
+  color: var(--primary);
+
+  // NOTE: タイトルは小文字主体で見た目の中心が下寄りになるため、アイコンを少し下げて揃える
+  > svg {
+    transform: translateY(2px);
+  }
+}
+
+// 現在のテーマと逆側のアイコンを表示する
+.theme-toggle__sun {
+  display: none;
+}
+
+[data-theme="dark"] {
+  .theme-toggle__moon {
+    display: none;
+  }
+
+  .theme-toggle__sun {
+    display: inline-block;
+  }
+}
+
+.menu {
+  display: flex;
+  margin: auto var(--gap);
+  padding: 0;
+  list-style: none;
+  word-break: keep-all;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  li + li {
+    margin-inline-start: var(--gap);
+  }
+
+  a {
+    font-size: 16px;
+  }
+
+  a:hover {
+    color: var(--secondary);
   }
 }

@@ -1,14 +1,19 @@
 -# excerpt: true の場合は本文を抜粋して表示する（記事一覧用）
 - excerpt = ArticleExcerpt.new(article.text) if local_assigns[:excerpt]
-%div.blog-post
-  %h2= link_to article.title, article_path(slug: article.slug)
-  %p= I18n.l(article.published_at, format: :long)
-  - unless article.tags.empty?
-    %div.tag-area
-      %i.fas.fa-tags
-      %p= join_with_comma(article.tags.pluck(:name))
-  %br
-  %p.article-text
+%article.blog-post{ class: excerpt ? 'post-entry' : 'post-single' }
+  %header.post-header
+    - if excerpt
+      %h2.post-title= link_to article.title, article_path(slug: article.slug)
+    - else
+      %h1.post-title= article.title
+    .post-meta
+      %span= I18n.l(article.published_at, format: :long)
+      - unless article.tags.empty?
+        %span.tag-area
+          %i.fas.fa-tags
+          - article.tags.each do |tag|
+            = link_to tag.name, article_tags_path(tag_name: tag.name), class: 'tag-name'
+  .article-text.post-content
     = excerpt ? excerpt.text : article.text
   - if excerpt&.truncated?
     %p.read-more
