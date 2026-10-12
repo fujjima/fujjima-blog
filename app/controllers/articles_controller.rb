@@ -29,7 +29,9 @@ class ArticlesController < GeneralController
   end
 
   def tags
-    @articles = paginate(Article.tagged_by(params['tag_name']))
+    @articles = paginate(Article.tagged_by(params['tag_name'])
+                                .preload(:tags)
+                                .order(published_at: :desc))
     render :index
   end
 

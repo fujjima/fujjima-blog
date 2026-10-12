@@ -1,6 +1,7 @@
 // kaminari のページネーション（app/views/kaminari）
 .pagination {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 8px;
   margin: var(--gap) 0;
@@ -32,5 +33,21 @@
     color: var(--secondary);
     background: none;
     pointer-events: none;
+  }
+
+  // NOTE: スマホ幅ではページ数が多いと横にはみ出すため、ボタンを小さくし、
+  //       現在ページの前後1ページ以外と省略記号を非表示にする（app/views/kaminari/_page.html.haml）
+  @media screen and (max-width: 576px) {
+    gap: 4px;
+
+    .page-item-far,
+    .page-gap {
+      display: none;
+    }
+
+    .page-link {
+      min-width: 32px;
+      padding: 2px 8px;
+    }
   }
 }

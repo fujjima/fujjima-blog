@@ -1,6 +1,8 @@
+-# スマホ幅では現在ページの前後1ページのみ表示するため、それより離れたページには目印のクラスを付ける
+- far_class = 'page-item-far' if (page - current_page).abs > 1
 - if page.current?
   %li.page-item.active
     = content_tag :a, page, data: { remote: remote }, rel: page.rel, class: 'page-link'
 - else
-  %li.page-item
+  %li.page-item{ class: far_class }
     = link_to page, url, remote: remote, rel: page.rel, class: 'page-link'
