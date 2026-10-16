@@ -1,0 +1,40 @@
+// 検索画面（app/views/search）
+.searchbox__input {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 16px;
+  color: var(--primary);
+  background: var(--entry);
+  border: 2px solid var(--tertiary);
+  border-radius: var(--radius);
+
+  &:focus {
+    border-color: var(--secondary);
+    outline: none;
+  }
+}
+
+.search-results {
+  margin: var(--content-gap) 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  a {
+    display: block;
+    font-size: 18px;
+    color: var(--primary);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.search-results__message {
+  color: var(--secondary);
+}

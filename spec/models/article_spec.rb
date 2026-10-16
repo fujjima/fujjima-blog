@@ -26,6 +26,28 @@ RSpec.describe Article, type: :model do
     end
   end
 
+  describe '.search' do
+    let!(:title_hit) { create :article, title: 'Ruby on Rails', text: '本文' }
+    let!(:text_hit) { create :article, title: 'タイトル', text: 'Ruby の [リンク](https://rails.example.com)' }
+    let!(:other) { create :article, title: 'その他', text: '関係なし' }
+
+    it 'タイトル・本文を大文字小文字を区別せず部分一致で検索すること' do
+      expect(Article.search('ruby')).to contain_exactly(title_hit, text_hit)
+    end
+
+    it '空白区切りの複数語は AND 条件とすること' do
+      expect(Article.search('ruby　リンク')).to contain_exactly(text_hit)
+    end
+
+    it 'LIKE のワイルドカードをエスケープすること' do
+      expect(Article.search('%')).to be_empty
+    end
+
+    it '検索語がない場合は 0 件とすること' do
+      expect(Article.search(nil)).to be_empty
+    end
+  end
+
   describe 'group_by_***' do
     before do
       # NOTE: 検証のためコールバックを一時的に解除する

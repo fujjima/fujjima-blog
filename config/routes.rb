@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   get '/tags/:tag_name', to: 'articles#tags', as: 'article_tags'
   resources :tags, only: %i[index]
 
+  get '/search', to: 'search#index', as: :search
+
   get '/:slug', to: 'articles#show', as: :article
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
