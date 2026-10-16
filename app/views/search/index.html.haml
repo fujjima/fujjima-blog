@@ -1,0 +1,10 @@
+= vite_javascript_tag 'search'
+
+%header.page-header
+  %h1 Search
+
+.searchbox
+  %input.searchbox__input{ type: 'search', value: params[:q], placeholder: 'タイトル・本文を検索',
+                           autocomplete: 'off', autofocus: true, 'aria-label': '記事を検索',
+                           data: { url: search_path(format: :json) } }
+  %ul.search-results{ 'aria-label': '検索結果' }
